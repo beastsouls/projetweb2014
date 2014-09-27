@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style type="text/css">
+<!--
+
+$full: 100%; 
+$auto: 0 auto ;
+$align:center ; 
+
+@mixin disable{
+  outline:none;
+  border:none;
+}
+
+@mixin easeme{
+  -webkit-transition:1s ease;
+  -moz-transition:1s ease;
+  -o-transition:1s ease;
+  -ms-transition:1s ease;
+  transition:1s ease;
+}
+
+
+body {
+	background: url("http://marshall-design.com/codepen/abs6.jpg");
+}
+
+p{
+  font:13px Open Sans;
+  color:#6E6E6E;
+  text-shadow:#000 0px 1px 5px;
+  margin-bottom:30px;
+}
+
+h1 {
+	text-align: $align;
+	padding: 30px 0px 0px 0px;
+	font: 25px Oswald;
+	color: #FFF;
+	text-transform: uppercase;
+	text-shadow: #000 0px 1px 5px;
+	margin: 0px;
+}
+
+.form{
+  width:$full;
+}
+
+.name-help, .compagnie-help, .Email-help, .Adresse-help, .statuts-help{
+	display: none;
+	padding: 0px;
+	margin: 0px 0px 15px 0px;
+}
+
+input[type="text"]{
+  width:98%;
+  padding:15px 0px 15px 8px;
+  border-radius:5px;
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.3), 0 1px 1px -1px rgba(255,255,255,0.3);
+	background:rgba(0,0,0,0.2);
+  @include disable;
+  border:1px solid rgba(0,0,0,1);
+  margin-bottom:10px;
+  color:#6E6E6E;
+  text-shadow:#000 0px 1px 5px;
+}
+
+input:focus{
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.7), 0 1px 1px -1px rgba(255,255,255,0.3);
+  background:rgba(0,0,0,0.3);
+  @include easeme;
+}
+
+/*site container*/
+.wrapper{
+  width:50%;
+  margin:100px;
+  margin-top: 250px;
+  position: center;
+  margin-left: 300px;
+}
+.optimize{
+  position:fixed;
+  right:3%;
+  top:0px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
+  background-image: -webkit-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: linear-gradient(#28D2DE 0%, #1A878F 100%);
+  font: 14px Oswald;
+  color: #FFF;
+  text-transform: uppercase;
+  text-shadow: #000 0px 1px 5px;
+  border: 1px solid #000;
+  opacity: 0.7;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
+}
+
+input[type="submit"]:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+-->
+</style>
+
+<head>
+<title>Client</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+	<div th:switch="${client.id}" >
+		<h1 th:case="-1">Creer un nouveau client</h1>
+		<h1 th:case="*">Editer un client existant</h1>
+	</div>
+
+
+	<form action="#" th:object="${client}" method="post">
+		<input type="text" th:field="*{name}" placeholder="Name" class="name" />
+			<div>
+				<p class="name-help">Nom et le prénom du client.</p>
+			</div>
+		<input type="text" th:field="*{compagnie}" placeholder="compagnie" class="compagnie"/>
+			<div>
+				<p class="compagnie-help">Rentrer le nom de l'entreprise.</p>
+			</div>
+	
+		
+		<input type="text" th:field="*{Email}" placeholder="Email" class="Email"/>
+			<div>
+				<p class="Email-help">Adresse e-mail valide du client.</p>
+			</div>
+		
+		
+		<input type="text" th:field="*{Adresse}" placeholder="Adresse" class="Adresse"/>
+			<div>
+				<p class="Adresse-help">Coordonnée du client.</p>
+			</div>
+		
+		<!--<input type="text" th:field="*{statuts}" placeholder="statuts" class="statuts"/>
+			<div>
+				<p class="statuts-help">Coordonnée du client.</p>
+			</div>-->
+		
+		<table>
+			<td><FORM ACTION="../client/"><INPUT TYPE="SUBMIT" VALUE="envoyer" class="submit"/></FORM></td>
+			<td><FORM ACTION="/client/"><INPUT TYPE="SUBMIT" VALUE="retour" class="submit"/></FORM></td>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>
+
+<script>
+	$(".name").focus(function() {
+		$(".name-help").slideDown(500);
+	}).blur(function() {
+		$(".name-help").slideUp(500);
+	});
+
+	$(".Email").focus(function() {
+		$(".Email-help").slideDown(500);
+	}).blur(function() {
+		$(".Email-help").slideUp(500);
+	});
+
+	$(".compagnie").focus(function() {
+		$(".compagnie-help").slideDown(500);
+	}).blur(function() {
+		$(".compagnie-help").slideUp(500);
+	});
+
+	$(".Adresse").focus(function() {
+		$(".Adresse-help").slideDown(500);
+	}).blur(function() {
+		$(".Adresse-help").slideUp(500);
+	});
+	
+	$(".statuts").focus(function() {
+		$(".statuts-help").slideDown(500);
+	}).blur(function() {
+		$(".statuts-help").slideUp(500);
+	});
+</script>
