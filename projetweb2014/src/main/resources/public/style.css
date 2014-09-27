@@ -4,15 +4,28 @@ body {
   font-family: Arial, sans-serif;
   color: #024457;
   background: url("http://marshall-design.com/codepen/abs6.jpg");
+  
 }
 
 table {
 	 border-collapse: collapse;
 }
 
-.vide {}
+.vide {
+	
+  width:40%;
+  margin:100px;
+  margin-top: 250px;
+  position: center;
+  margin-left: 300px;
 
-td, a { align="center"; color: white;}
+}
+
+.espacement {
+	margin:5px;
+}
+
+td, a { align: center; color: white;}
 
 th { color: white;}
 
@@ -44,3 +57,8 @@ input[type="submit"]:hover {
   opacity: 1;
   cursor: pointer;
 }
+
+select {
+	width:250px;
+}
+
