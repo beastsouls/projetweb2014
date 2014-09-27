@@ -2,67 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>List</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style type="text/css">
-<!--
-
-body {
-  padding: 0 2em;
-  font-family: Arial, sans-serif;
-  color: #024457;
-  background: url("http://marshall-design.com/codepen/abs6.jpg");
-}
-
-table {
-	 border-collapse: collapse;
-	
-}
-
-td, a { align="center"; color: white; }
-
-th { color: white;}
-
-input[type="submit"] {
-  width: 100%;
-  padding: 15px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
-  background-image: -webkit-linear-gradient(#28D2DE 0%, #1A878F 100%);
-  background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%);
-  background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%);
-  background-image: linear-gradient(#28D2DE 0%, #1A878F 100%);
-  font: 14px Oswald;
-  color: #FFF;
-  text-transform: uppercase;
-  text-shadow: #000 0px 1px 5px;
-  border: 1px solid #000;
-  opacity: 0.7;
-  -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
-  border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
-}
-
-input[type="submit"]:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
--->
-</style>
 </head>
 <body>
 	<table>
-		<td><FORM ACTION="../create/client/">
-				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" />
-			</FORM></td>
-		<td><FORM ACTION="../create/produit/">
-				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" />
-			</FORM></td>
+		<td><FORM ACTION="../create/client/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" /></FORM></td>
+		<td><FORM ACTION="../create/produit/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" /></FORM></td>
 	</table>
 	<table  cellpadding="15" border="2" align="center">
 		<thead>
