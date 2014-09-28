@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/style/style.css"/>
+</head>
+<body>
+<div id="bloc_page">
+
+	       <div id="banniere_image">
+                       <form action="#" th:action="@{/}" th:object="${product}" method="post">
+					        <p>Nom du client: <input type="text" th:field="*{name}" /></p>
+					        <p><input type="submit" value="recherche" /> </p>
+					    </form>
+                <div id="banniere_description">
+                    PARTIE CLIENT: ICI ON DOIT RECHERCHE LE CLIENT A ENCAISSER
+                    
+                </div>
+            </div>
+            
+            <section>
+                <article>
+                    <h1><img src="images/ico_epingle.png" alt="Catégorie voyage" class="ico_categorie" />les produits</h1>
+                    <h1>ICI C EST LA PARTIE DES PRODUITS VENDUES PAR LE MAGASIN</h1>
+					    <form action="#" th:action="@{/}" th:object="${product}" method="post">
+					        <p>produit: <input type="text" th:field="*{name}" /></p>
+					        <p><input type="submit" value="Submit" /> </p>
+					    </form>
+					    
+                </article>
+                <aside>
+                    <h1>LE PANIER </h1>
+                     <ul>
+					    	<li th:each="product : ${session.panier}" th:text="${product.name}"></li>
+					 </ul>
+	                   
+                </aside>
+            </section>
+            <footer>
+                ICI ON VERA APRES CEUX QU ON VA METTRE
+            </footer>
+</div>
+</body>
+</html> 
