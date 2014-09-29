@@ -56,10 +56,8 @@
 				<td><span th:text="${produit.prix}"></span></td>
 				<td><span th:text="${produit.description}"></span></td>
 				<td><span th:text="${produit.stock}"></span></td>
-				<td><span><a
-						th:href="@{/edit/produit(id=${produit.id})}">Editer</a></span></td>
-				<td><span><a
-						th:href="@{/delete/produit(id=${produit.id})}">Supprimer</a></span></td>
+				<td><span><a th:href="@{/edit/produit(id=${produit.id})}">Editer</a></span></td>
+				<td><span><a th:href="@{/delete/produit(id=${produit.id})}">Supprimer</a></span></td>
 			</tr>
 
 		</tbody>
