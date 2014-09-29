@@ -3,7 +3,7 @@ body {
   padding: 0 2em;
   font-family: Arial, sans-serif;
   color: #024457;
-  background:url("http://img0.mxstatic.com/wallpapers/c7602278d89508dc064979a1067f5ae9_large.jpeg");
+  background-image:url("/fond.jpeg");
   
 }
 
@@ -25,9 +25,9 @@ table {
 	margin:5px;
 }
 
-td, a { align: center; color: white;}
+td, a { align: center; color: black;}
 
-th { color: white;}
+th { color: black;}
 
 input[type="submit"] {
   width: 100%;
@@ -63,7 +63,7 @@ select {
 }
 
 .taille { width: 175px;}
-.blanc {background-color: white;}
+.blanc {background-color: black;}
 
 .button {
 display: inline-block;

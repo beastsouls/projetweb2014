@@ -40,25 +40,32 @@ public class ClientController extends WebMvcConfigurerAdapter {
 		return "redirect:/client/";
 	}
 	
+	@RequestMapping(value = "/client/recherche", method = RequestMethod.GET)
+	public String searchForm(  @ModelAttribute Client client, Model model) {
+		System.out.println("search form");
+		model.addAttribute("clients", clientRepository.findOne(client.getId()));
+		System.out.println(clientRepository.findOne(client.getId()));
+		System.out.println(client);
+		System.out.println(client.getId());
+		System.out.println(client.getName());
+		return "list";
+	}
+	
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {
-		
 		model.addAttribute("clients", clientRepository.findAll());
 		return "list";
 	}
 	
 	@RequestMapping(value = "/delete/client", method = RequestMethod.GET)
 	public String deleteclient(@RequestParam("id") Long id, Model model) {
-		
 		clientRepository.delete(id);
-		
 		return "redirect:/client/";
 	}
 	
 	@RequestMapping(value = "/edit/client", method = RequestMethod.GET)
 	public String editForm(@RequestParam("id") Long id, Model model) {
-		
 		model.addAttribute("client", clientRepository.findOne(id));
 		return "create";
 	}

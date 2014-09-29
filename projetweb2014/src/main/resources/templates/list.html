@@ -25,7 +25,7 @@
 			</FORM></td>
 	</table>
 
-	<form>
+	<form  ACTION="../client/recherche" method="GET">
 		<!-- <fieldset>
    		 <legend>Rechercher un client</legend>-->
 		<table class="vide">
@@ -36,7 +36,7 @@
 				<td><SELECT class="taille" id="zzz" name="zzz"  >
 						<option th:each="client : ${clients}"  th:text="${client.name}" th:value="${client.name}" id="${client.id}" value="${client.id}"></option>
 					</SELECT></td>
-				<td><input type="button" value="Rechercher" class="button" /></td>
+				<td><input type="submit" value="Rechercher" class="button" /></td>
 			</tr>
 		</table>
 		<!-- </fieldset>-->

@@ -17,7 +17,7 @@ $align:center ;
 
 
 body {
-	background: url("http://marshall-design.com/codepen/abs6.jpg");
+	 background-image:url("/fond.jpeg");
 }
 
 p{
@@ -45,8 +45,8 @@ h1 {
 	display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;
-	color: white;
-	text-shadow: white;
+	color: black;
+	text-shadow: black;
 }
 
 .name, .compagnie, .Email, .Adresse, .role { color: white;}
@@ -61,7 +61,7 @@ input[type="text"]{
   border:1px solid rgba(0,0,0,1);
   margin-bottom:10px;
   color:#6E6E6E;
-  text-shadow:#000 0px 1px 5px;
+  /*text-shadow:#000 0px 1px 5px;*/
 }
 
 input:focus{
