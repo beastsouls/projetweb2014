@@ -41,7 +41,7 @@ h1 {
   width:$full;
 }
 
-.name-help, .compagnie-help, .Email-help, .Adresse-help, .statuts-help{
+.name-help, .compagnie-help, .Email-help, .Adresse-help, .role-help{
 	display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;

@@ -11,7 +11,7 @@ public class Client {
 	@GeneratedValue
 	private long id = -1;
 	private String name;
-	private String statuts;
+	private String role;
 	private String compagnie;
 	private String Email;
 	private String Adresse;
@@ -28,11 +28,11 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getStatus() {
-		return statuts;
+	public String getRole() {
+		return role;
 	}
-	public void setStatus(String status) {
-		this.statuts = status;
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getCompagnie() {
 		return compagnie;

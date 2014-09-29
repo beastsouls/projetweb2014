@@ -5,8 +5,12 @@
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <link rel="stylesheet" type="text/css" href="/select/select2.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
-$(document).ready(function() { $("#zzz").select2(); });
+	$(document).ready(function() {
+		$("#zzz").select2();
+	});
 </script>
 </head>
 <body>
@@ -14,35 +18,37 @@ $(document).ready(function() { $("#zzz").select2(); });
 	<!-- <a href="/create/client/">Creer un nouveau client</a>
 	<a href="/create/produit/">Creer un nouveau produit</a>-->
 	<table>
-	<td><FORM ACTION="../create/client/"> <INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client"/></FORM></td>
-	<td><FORM ACTION="../create/produit/"> <INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit"/></FORM></td>
+		<td><FORM ACTION="../create/client/">
+				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" />
+			</FORM></td>
+		<td><FORM ACTION="../create/produit/">
+				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" />
+			</FORM></td>
 	</table>
-	
+
 	<form>
-  		<!-- <fieldset>
+		<!-- <fieldset>
    		 <legend>Rechercher un client</legend>-->
-   			 <table class="vide">
-   			 	<tr class="espacement">
-   			 		<td>
-   			 			<label> Name</label>
-   			 		</td> 
-   			 		<td> 
-   			 			<label> Liste de client</label>
-   			 		</td>
-   			 	</tr>
-   			 	<tr>
-   			 		<td><input type="text" name="Name" placeholder="Name"/></td>
-   			 		<td><SELECT id="zzz" name="zzz"></SELECT></td>
-   			 	</tr>
-   			 	<tr></tr>
-   			 	<tr class="espacement">
-   			 		<td><input type="button" value="Rechercher" /></td>
-   			 	</tr>
-   			 </table>
-  		<!-- </fieldset>-->
+		<table class="vide">
+			<tr class="espacement">
+				<td><label> Name</label></td>
+				<td><label> Liste de client</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="Name" placeholder="Name" /></td>
+				<td><SELECT class="taille" id="zzz" name="zzz"  >
+						<option th:each="client : ${clients}"  th:text="${client.name}" th:value="${client.name}" id="${client.id}" value="${client.id}"></option>
+					</SELECT></td>
+			</tr>
+			<tr></tr>
+			<tr class="espacement">
+				<td><input type="button" value="Rechercher" /></td>
+			</tr>
+		</table>
+		<!-- </fieldset>-->
 	</form>
 
-	<table  cellpadding="15" border="2" align="center">
+	<table cellpadding="15" border="2" align="center">
 		<thead>
 			<!-- En-tête du tableau -->
 			<tr>
@@ -50,21 +56,21 @@ $(document).ready(function() { $("#zzz").select2(); });
 				<th>COMPAGNIE</th>
 				<th>EMAIL</th>
 				<th>ADRESSE</th>
+				<th>STATUT</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr th:each="client : ${clients}">
-			<td><span th:text="${client.name}"></span></td>
-			<td><span th:text="${client.compagnie}"></span></td>
-			<td><span th:text="${client.Email}"></span></td>
-			<td><span th:text="${client.Adresse}"></span></td>
-			<!--<td><span th:text="${client.statuts}"></span></td>-->
-			<td><span><a th:href="@{/edit/client(id=${client.id})}">Editer</a></span></td>
-			<td><span><a th:href="@{/delete/client(id=${client.id})}">Supprimer</a></span></td>
-		</tr>
-		
+			<tr th:each="client : ${clients}">
+				<td><span th:text="${client.name}"></span></td>
+				<td><span th:text="${client.compagnie}"></span></td>
+				<td><span th:text="${client.Email}"></span></td>
+				<td><span th:text="${client.Adresse}"></span></td>
+				<td><span th:text="${client.role}"></span></td>
+				<td><span><a th:href="@{/edit/client(id=${client.id})}">Editer</a></span></td>
+				<td><span><a th:href="@{/delete/client(id=${client.id})}">Supprimer</a></span></td>
+			</tr>
 		</tbody>
-		
+
 	</table>
 </body>
 </html>

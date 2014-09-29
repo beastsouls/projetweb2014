@@ -2,14 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>List</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<link rel="stylesheet" type="text/css" href="/select/select2.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#zzz").select2();
+	});
+</script>
 </head>
 <body>
 	<table>
 		<td><FORM ACTION="../create/client/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" /></FORM></td>
 		<td><FORM ACTION="../create/produit/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" /></FORM></td>
 	</table>
+	
+	<form>
+		<!-- <fieldset>
+   		 <legend>Rechercher un produit</legend>-->
+		<table class="vide">
+			<tr class="espacement">
+				<td><label> Name</label></td>
+				<td><label> Liste de produit</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="Name" placeholder="Name" /></td>
+				<td><SELECT class="taille" id="zzz" name="zzz"  >
+						<option th:each="produit : ${produits}"  th:text="${produit.name}" th:value="${produit.name}" id="${produit.id}" value="${produit.id}"></option>
+					</SELECT></td>
+			</tr>
+			<tr></tr>
+			<tr class="espacement">
+				<td><input type="button" value="Rechercher" /></td>
+			</tr>
+		</table>
+		<!-- </fieldset>-->
+	</form>
+	
 	<table  cellpadding="15" border="2" align="center">
 		<thead>
 			<!-- En-tête du tableau -->

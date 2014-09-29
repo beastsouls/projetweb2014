@@ -38,10 +38,10 @@
 				<p class="Adresse-help">Coordonnée du client.</p>
 			</div>
 		
-		<!--<input type="text" th:field="*{statuts}" placeholder="statuts" class="statuts"/>
+		<input type="text" th:field="*{role}" placeholder="role" class="role"/>
 			<div>
-				<p class="statuts-help">Coordonnée du client.</p>
-			</div>-->
+				<p class="role-help">Role du client.</p>
+			</div>
 		
 		<table>
 			<td><FORM ACTION="../client/"><INPUT TYPE="SUBMIT" VALUE="envoyer" class="submit"/></FORM></td>
@@ -78,9 +78,9 @@
 		$(".Adresse-help").slideUp(500);
 	});
 	
-	$(".statuts").focus(function() {
-		$(".statuts-help").slideDown(500);
+	$(".role").focus(function() {
+		$(".role-help").slideDown(500);
 	}).blur(function() {
-		$(".statuts-help").slideUp(500);
+		$(".role-help").slideUp(500);
 	});
 </script>
