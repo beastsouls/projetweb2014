@@ -3,6 +3,9 @@ package projet.client.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class Client {
@@ -10,10 +13,20 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private long id = -1;
+	
+	@Size(min=2, max=30)
 	private String name;
+	
+	@Size(min=2, max=30)
 	private String role;
+	
+	@Size(min=2, max=30)
 	private String compagnie;
+	
+	@Email
 	private String Email;
+	
+	@Size(min=2, max=30)
 	private String Adresse;
 	
 	public long getId() {

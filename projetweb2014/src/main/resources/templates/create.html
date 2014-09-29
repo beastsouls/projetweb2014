@@ -18,6 +18,7 @@
 
 	<form action="#" th:object="${client}" method="post">
 		<input type="text" th:field="*{name}" placeholder="Name" class="name" />
+		<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</label>
 			<div>
 				<p class="name-help">Nom et le prénom du client.</p>
 			</div>
