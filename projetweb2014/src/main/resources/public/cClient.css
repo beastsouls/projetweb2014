@@ -45,7 +45,11 @@ h1 {
 	display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;
+	color: white;
+	text-shadow: white;
 }
+
+.name, .compagnie, .Email, .Adresse, .role { color: white;}
 
 input[type="text"]{
   width:98%;

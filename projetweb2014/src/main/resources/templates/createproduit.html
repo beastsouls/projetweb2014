@@ -21,6 +21,7 @@
 
 		<form action="#" th:object="${produit}" method="post">
 			<input type="text" th:field="*{name}" placeholder="Name" class="name" />
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			<div>
 				<p class="name-help">Nom du produit.</p>
 			</div>
@@ -29,11 +30,11 @@
 			
 			
 				<SELECT placeholder="type" size="1" th:field="*{Typeproduit}" class="type">
-					<OPTION value="">----selectionner-----</OPTION>
-					<OPTION value="">Nourriture</OPTION>
-					<OPTION value="">Boisson</OPTION>    
-					<OPTION value="">Vetements</OPTION>    
-					<OPTION value="">Autre</OPTION>   
+					<OPTION value="" class="color">----selectionner-----</OPTION>
+					<OPTION value="" class="color">Nourriture</OPTION>
+					<OPTION value="" class="color">Boisson</OPTION>    
+					<OPTION value="" class="color">Vetements</OPTION>    
+					<OPTION value="" class="color">Autre</OPTION>   
 				</SELECT>
   		 
 			<div>
@@ -42,19 +43,20 @@
 	
 		
 		<input type="text" th:field="*{Prix}" placeholder="prix" class="prix" />
+		<span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 			<div>
 				<p class="prix-help">Prix du produit.</p>
 			</div>
 		
 		
-		<input type="text" th:field="*{stock}" placeholder="stock"
-							class="stock" />
+		<input type="text" th:field="*{stock}" placeholder="stock"	class="stock" />
+		<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
 			<div>
 				<p class="stock-help">Nombre de produit en stock.</p>
 			</div>
 			
-		<input type="text" th:field="*{description}" placeholder="description"
-							class="description" />
+		<input type="text" th:field="*{description}" placeholder="description" class="description" />
+		<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 			<div>
 				<p class="description-help">Description du produit.</p>
 			</div>

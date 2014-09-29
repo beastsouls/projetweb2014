@@ -3,6 +3,9 @@ package projet.produit.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Produit {
@@ -10,11 +13,24 @@ public class Produit {
 	@Id
 	@GeneratedValue
 	private long id = -1;
+	
+	@Size(min=2, max=30)
 	private String name;
+	
 	private String Typeproduit;
+	
+	@NotNull
+    @Min(1)
 	private String Prix;
+	
+	@Size(min=2, max=3000)
 	private String description;
+	
+	@NotNull
+    @Min(0)
 	private int stock;
+	
+	
 	public long getId() {
 		return id;
 	}

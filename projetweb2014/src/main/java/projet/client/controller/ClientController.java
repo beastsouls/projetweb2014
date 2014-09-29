@@ -19,7 +19,7 @@ import projet.client.repository.ClientRepository;
 
 
 @Controller
-public class ClientController {
+public class ClientController extends WebMvcConfigurerAdapter {
 	
 	@Autowired
 	private ClientRepository clientRepository;
@@ -32,14 +32,14 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value = "/create/client", method = RequestMethod.POST)
-	public String submitForm(@Valid @ModelAttribute Client client, Model model, BindingResult bindingresult) {
+	public String submitForm( @Valid @ModelAttribute Client client, BindingResult bindingresult) {
 		if (bindingresult.hasErrors()) {
-            return "redirect:/create/client";
+            return "create";
         }
 		clientRepository.save(client);
-		
 		return "redirect:/client/";
 	}
+	
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {

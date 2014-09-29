@@ -1,13 +1,17 @@
 package projet.produit.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import projet.client.model.Client;
 import projet.produit.model.Produit;
 import projet.produit.repository.produitRepository;
 
@@ -26,10 +30,11 @@ public class produitController {
 	}
 	
 	@RequestMapping(value = "/create/produit", method = RequestMethod.POST)
-	public String submitForm(@ModelAttribute Produit produit, Model model) {
-		
+	public String submitForm( @Valid @ModelAttribute Produit produit, BindingResult bindingresult) {
+		if (bindingresult.hasErrors()) {
+            return "createproduit";
+        }
 		produitRepository.save(produit);
-		
 		return "redirect:/produit/";
 	}
 	

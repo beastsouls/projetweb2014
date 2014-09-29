@@ -16,33 +16,40 @@
 	</div>
 
 
-	<form action="#" th:action="@{/create/client}"  th:object="${client}" method="post">
+	<form action="#" th:object="${client}" method="post">
 		<input type="text" th:field="*{name}" placeholder="Name" class="name" />
-		<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">YOP</label>
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			<div>
 				<p class="name-help">Nom et le prénom du client.</p>
 			</div>
+			
 		<input type="text" th:field="*{compagnie}" placeholder="compagnie" class="compagnie"/>
+		<span th:if="${#fields.hasErrors('compagnie')}" th:errors="*{compagnie}"></span>
 			<div>
 				<p class="compagnie-help">Rentrer le nom de l'entreprise.</p>
 			</div>
 	
 		
 		<input type="text" th:field="*{Email}" placeholder="Email" class="Email"/>
+		<span th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}"></span>
 			<div>
 				<p class="Email-help">Adresse e-mail valide du client.</p>
 			</div>
 		
 		
 		<input type="text" th:field="*{Adresse}" placeholder="Adresse" class="Adresse"/>
+		<span th:if="${#fields.hasErrors('Adresse')}" th:errors="*{Adresse}"></span>
 			<div>
 				<p class="Adresse-help">Coordonnée du client.</p>
 			</div>
+			
 		
 		<input type="text" th:field="*{role}" placeholder="role" class="role"/>
+		<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
 			<div>
 				<p class="role-help">Role du client.</p>
 			</div>
+			
 		
 		<table>
 			<td><FORM ACTION="../client/"><INPUT TYPE="SUBMIT" VALUE="envoyer" class="submit"/></FORM></td>

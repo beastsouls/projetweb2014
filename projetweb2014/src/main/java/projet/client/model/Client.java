@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Client {
@@ -23,6 +24,7 @@ public class Client {
 	@Size(min=2, max=30)
 	private String compagnie;
 	
+	@NotEmpty(message="Email obligatoire")
 	@Email
 	private String Email;
 	

@@ -41,6 +41,7 @@ h1 {
 	display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;
+	color: white;
 }
 
 input[type="text"] {
@@ -124,3 +125,5 @@ input[type="submit"]:hover {
 	opacity: 1;
 	cursor: pointer;
 }  
+
+.color { background-color: white; color: black;}
