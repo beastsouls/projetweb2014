@@ -32,8 +32,10 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value = "/create/client", method = RequestMethod.POST)
-	public String submitForm(@ModelAttribute Client client, Model model) {
-		
+	public String submitForm(@Valid @ModelAttribute Client client, Model model, BindingResult bindingresult) {
+		if (bindingresult.hasErrors()) {
+            return "redirect:/create/client";
+        }
 		clientRepository.save(client);
 		
 		return "redirect:/client/";
@@ -68,17 +70,11 @@ public class ClientController {
 	}
 	
 	
-	public void addViewControllers(ViewControllerRegistry registry) {
+	/*public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/list").setViewName("list");
-    }
+    }*/
 
   
-    @RequestMapping(value="/", method=RequestMethod.POST)
-    public String checkClientInfo(@Valid Client client, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "create";
-        }
-        return "redirect:/create/client/";
-    }
+    
 
 }
