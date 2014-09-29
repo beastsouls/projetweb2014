@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="/select/select2.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#zzz").select2();
@@ -18,11 +19,9 @@
 	<!-- <a href="/create/client/">Creer un nouveau client</a>
 	<a href="/create/produit/">Creer un nouveau produit</a>-->
 	<table>
-		<td><FORM ACTION="../create/client/">
-				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" />
+		<td><FORM ACTION="../create/client/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" />
 			</FORM></td>
-		<td><FORM ACTION="../create/produit/">
-				<INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" />
+		<td><FORM ACTION="../create/produit/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" />
 			</FORM></td>
 	</table>
 
@@ -31,18 +30,13 @@
    		 <legend>Rechercher un client</legend>-->
 		<table class="vide">
 			<tr class="espacement">
-				<td><label> Name</label></td>
 				<td><label> Liste de client</label></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="Name" placeholder="Name" /></td>
 				<td><SELECT class="taille" id="zzz" name="zzz"  >
 						<option th:each="client : ${clients}"  th:text="${client.name}" th:value="${client.name}" id="${client.id}" value="${client.id}"></option>
 					</SELECT></td>
-			</tr>
-			<tr></tr>
-			<tr class="espacement">
-				<td><input type="button" value="Rechercher" /></td>
+				<td><input type="button" value="Rechercher" class="button" /></td>
 			</tr>
 		</table>
 		<!-- </fieldset>-->

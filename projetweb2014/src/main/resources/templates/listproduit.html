@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="/select/select2.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#zzz").select2();
@@ -24,7 +25,6 @@
    		 <legend>Rechercher un produit</legend>-->
 		<table class="vide">
 			<tr class="espacement">
-				<td><label> Name</label></td>
 				<td><label> Liste de produit</label></td>
 			</tr>
 			<tr>
@@ -32,10 +32,7 @@
 				<td><SELECT class="taille" id="zzz" name="zzz"  >
 						<option th:each="produit : ${produits}"  th:text="${produit.name}" th:value="${produit.name}" id="${produit.id}" value="${produit.id}"></option>
 					</SELECT></td>
-			</tr>
-			<tr></tr>
-			<tr class="espacement">
-				<td><input type="button" value="Rechercher" /></td>
+				<td><input type="button" value="Rechercher" class="button"/></td>
 			</tr>
 		</table>
 		<!-- </fieldset>-->
