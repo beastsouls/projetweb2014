@@ -42,12 +42,8 @@ public class ClientController extends WebMvcConfigurerAdapter {
 	
 	@RequestMapping(value = "/client/recherche", method = RequestMethod.GET)
 	public String searchForm(  @ModelAttribute Client client, Model model) {
-		System.out.println("search form");
-		model.addAttribute("clients", clientRepository.findOne(client.getId()));
+		model.addAttribute("client", clientRepository.findOne(client.getId()));
 		System.out.println(clientRepository.findOne(client.getId()));
-		System.out.println(client);
-		System.out.println(client.getId());
-		System.out.println(client.getName());
 		return "list";
 	}
 	
