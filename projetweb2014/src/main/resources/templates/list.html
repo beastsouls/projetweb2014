@@ -12,34 +12,36 @@
 	$(document).ready(function() {
 		$("#zzz").select2();
 	});
+	
+	function modifier()
+	{
+	var valeur = document.forms['form1'].elements['zzz'].value; // Contient la valeur de l'<input />
+	document.location.href = '../client/recherche?id='+valeur;
+	}
 </script>
+
 </head>
 <body>
 
-	<!-- <a href="/create/client/">Creer un nouveau client</a>
-	<a href="/create/produit/">Creer un nouveau produit</a>-->
 	<table>
-		<td><FORM ACTION="../create/client/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" />
-			</FORM></td>
-		<td><FORM ACTION="../create/produit/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" />
-			</FORM></td>
+		<td><FORM ACTION="../create/client/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau client" /></FORM></td>
+		<td><FORM ACTION="../create/produit/"><INPUT TYPE="SUBMIT" VALUE="Creer un nouveau produit" /></FORM></td>
 	</table>
 
-	<form  ACTION="../client/recherche" method="GET">
-		<!-- <fieldset>
-   		 <legend>Rechercher un client</legend>-->
+	<form action="../client/recherche" method="get" id="form1" name="form1">
 		<table class="vide">
 			<tr class="espacement">
 				<td><label> Liste de client</label></td>
 			</tr>
 			<tr>
-				<td><SELECT class="taille" id="zzz" name="zzz"  >
-						<option th:each="client : ${clients}"  th:text="${client.name}" th:value="${client.name}" id="${client.id}" value="${client.id}"></option>
-					</SELECT></td>
-				<td><input type="submit" value="Rechercher" class="button" /></td>
+				<td>
+					<SELECT class="taille" id="zzz" name="zzz"  >
+							<option th:each="client : ${clients}"  th:text="${client.name}" th:value="${client.id}" id="${client.id}" value="${client.id}"></option>
+					</SELECT>
+				</td>
+				<td> <a href="javascript:modifier();"> <input value="Rechercher" class="btn btn-search"/> </a> </td>
 			</tr>
 		</table>
-		<!-- </fieldset>-->
 	</form>
 
 	<table cellpadding="15" border="2" align="center">

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import projet.client.model.Client;
@@ -41,17 +39,16 @@ public class ClientController extends WebMvcConfigurerAdapter {
 	}
 	
 	@RequestMapping(value = "/client/recherche", method = RequestMethod.GET)
-	public String searchForm(  @ModelAttribute Client client, Model model) {
-		model.addAttribute("client", clientRepository.findOne(client.getId()));
-		System.out.println(clientRepository.findOne(client.getId()));
+	public String searchForm(@RequestParam("id") Long id, Model model) {
+		model.addAttribute("clients", clientRepository.findOne(id));
+		System.out.println(clientRepository.findOne(id).getName());
 		return "list";
 	}
 	
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {
-		model.addAttribute("clients", clientRepository.findAll());
-		return "list";
+		model.addAttribute("clients", clientRepository.findAll());return "list";
 	}
 	
 	@RequestMapping(value = "/delete/client", method = RequestMethod.GET)

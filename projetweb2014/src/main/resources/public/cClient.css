@@ -42,14 +42,16 @@ h1 {
 }
 
 .name-help, .compagnie-help, .Email-help, .Adresse-help, .role-help{
-	display: none;
+display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;
-	color: black;
-	text-shadow: black;
+	color:white;
 }
 
-.name, .compagnie, .Email, .Adresse, .role { color: white;}
+input::-webkit-input-placeholder {
+    color:yellow;
+}
+
 
 input[type="text"]{
   width:98%;
