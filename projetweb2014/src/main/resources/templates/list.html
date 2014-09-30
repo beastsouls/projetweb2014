@@ -19,20 +19,21 @@
 	var valeur = document.forms['form1'].elements['zzz'].value; // Contient la valeur de l'<input />
 
 	document.location.href = '../client/recherche?id='+valeur;
-	}
+	};
 	
 	function creationClient()
 	{
-		document.location.href = '../create/client';
-	}
+		document.location.href = "../create/client";
+	};
 	
-	function import(){
+	function importer(){
 		alert("Demande au prof, import d'excel, fichier texte ????");
-	}
+	};
 	
-	function export(){
+	function exporter(){
 		alert("Demande au prof, en quel format export ?")
-	}
+	};
+	
 	$(document).ready(function(){
 	    $('.filterable .btn-filter').click(function(){
 	        var $panel = $(this).parents('.filterable'),
@@ -91,17 +92,15 @@
  </ul>
 
 <fieldset class="well the-fieldset">		
-	<td>
 			<a href="javascript:creationClient();">
 			<input type="button" name = "creationClient" value="Creer un nouveau client" class="btn btn-inverse"/>
 			</a>
-			<a href="javascript:import();">
-			<input type="button" name = "import" value="import" class="btn btn-inverse"/>
+			<a href="javascript:importer();">
+			<input type="button" name = "importer" value="import" class="btn btn-inverse"/>
 			</a>
-			<a href="javascript:export();">
-			<input type="button" name = "export" value="export" class="btn btn-inverse"/>
+			<a href="javascript:exporter();">
+			<input type="button" name = "exporter" value="export" class="btn btn-inverse"/>
 			</a>
-	</td>
 </fieldset>
 
 <!-- <fieldset class="well the-fieldset">

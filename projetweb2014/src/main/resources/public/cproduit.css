@@ -124,7 +124,7 @@ input[type="submit"]:hover {
 	cursor: pointer;
 }  
 
-.color {color: white; }
+.color {text-color: white; }
 
 input::-webkit-input-placeholder {
     color:yellow;
