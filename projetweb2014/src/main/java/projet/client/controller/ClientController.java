@@ -22,7 +22,7 @@ public class ClientController extends WebMvcConfigurerAdapter {
 	@Autowired
 	private ClientRepository clientRepository;
 	
-
+	
 	@RequestMapping(value = "/create/client", method = RequestMethod.GET)
 	public String createForm(Model model) {
 		model.addAttribute("client", new Client());
@@ -48,6 +48,24 @@ public class ClientController extends WebMvcConfigurerAdapter {
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {
+		//Pour avoir des clients par défault
+		if(clientRepository.count()==0){
+			Client c = new Client();
+			c.setName("name1");
+			c.setAdresse("adresse1");
+			c.setCompagnie("compagnie1");
+			c.setEmail("email1@gmail.com");
+			c.setRole("role1");
+			clientRepository.save(c);
+			
+			c = new Client();
+			c.setName("name");
+			c.setAdresse("adresse");
+			c.setCompagnie("compagnie");
+			c.setEmail("email@gmail.com");
+			c.setRole("role");
+			clientRepository.save(c);
+		}
 		model.addAttribute("clients", clientRepository.findAll());return "list";
 	}
 	
