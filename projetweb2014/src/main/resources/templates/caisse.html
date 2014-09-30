@@ -9,7 +9,7 @@
 <div id="bloc_page">
 
 	       <div id="banniere_image">
-                       <form action="#" th:action="@{/}" th:object="${product}" method="post">
+                       <form action="#" th:action="@{/}" th:object="${produit}" method="post">
 					        <p>Nom du client: <input type="text" th:field="*{name}" /></p>
 					        <p><input type="submit" value="recherche" /> </p>
 					    </form>
@@ -23,7 +23,53 @@
                 <article>
                     <h1><img src="images/ico_epingle.png" alt="Catégorie voyage" class="ico_categorie" />les produits</h1>
                     <h1>ICI C EST LA PARTIE DES PRODUITS VENDUES PAR LE MAGASIN</h1>
-					    <form action="#" th:action="@{/}" th:object="${product}" method="post">
+                    
+                    
+                     <!-- récupérer les noms des différents produits et afficher sur les boutons du tableau 
+    	 En considérant un affichage par 5 colonnes
+    -->
+   
+   <!-- Ne rien faire si pas de produits -->
+    <table th:if="${nbProducts gt 0}">
+    
+    <!-- Gestion de l'affichage pour moins de 5 produits (donc sur une ligne) -->
+    	<tr th:if="${nbProducts lt 5}">
+    			
+    			<td th:each="i : ${#numbers.sequence(0,nbProducts-1)}">
+    				<input  type="button" th:name="${products.get(i).name}" th:value="${products.get(i).name}" onclick=""></input>
+    			</td>
+    	</tr>
+    	
+   <!-- Gestion de l'affichage pour nombre de produits multiples de 5 -->
+   
+   		<tr th:if="${nbProducts % 5 == 0}" th:each="i : ${#numbers.sequence(0,nbLignes-1)}" >
+    			
+    			<td th:if="${nbProducts ge 5}" th:each="j : ${#numbers.sequence(0,4)}">
+    				<input  type="button" th:name="${products.get(i*5+j).name}" th:value="${products.get(i*5+j).name}" onclick=""></input>
+    			</td>
+    	</tr>
+    	
+    <!-- Prise en compte du cas où la dernière ligne n'est pas complète -->
+    
+    	<div th:if="${nbProducts % 5 != 0 and nbProducts gt 5}" >
+    		<tr th:each="i : ${#numbers.sequence(0,nbLignes-2)}">	
+    			<td th:if="${nbProducts ge 5}" th:each="j : ${#numbers.sequence(0,4)}">
+    				<input  type="button" th:name="${products.get(i*5+j).name}" th:value="${products.get(i*5+j).name}" onclick=""></input>
+    			</td>
+    		</tr>	
+    		<tr>
+    			<td th:each="i : ${#numbers.sequence(0,nbProducts%5-1)}">
+    				<input  type="button" th:name="${products.get(i+5*(nbLignes-1)).name}" th:value="${products.get(i+5*(nbLignes-1)).name}" onclick=""></input>
+    			</td> 
+    	
+    	</tr>
+    	</div>
+    </table>
+    
+    <a href="/create/produit">Ajout d'un nouveau produit</a>
+                    
+                    
+					    <form action="#" th:action="@{/}" th:object="${produit}" method="post">
 					        <p>produit: <input type="text" th:field="*{name}" /></p>
 					        <p><input type="submit" value="Submit" /> </p>
 					    </form>
