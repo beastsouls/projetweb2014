@@ -1,4 +1,4 @@
-package application;
+package projet.caisse.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

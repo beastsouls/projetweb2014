@@ -1,4 +1,4 @@
-package application;
+package projet.caisse.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
-
-
+import projet.caisse.model.*;
 
 @Controller
 public class Controlleur {
-	
-
 		 @RequestMapping(value="/", method=RequestMethod.GET)
 		 public String createForm(Model model) {
 		 model.addAttribute("product", new Product());
