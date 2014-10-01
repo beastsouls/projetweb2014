@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>List Produits</title>
+<title>List Employes</title>
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <link rel="stylesheet" type="text/css" href="/select/select2.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />s
@@ -10,19 +10,29 @@
 <script src="/select/select2.js"></script>
 <link type="text/css" href="/asset/css/bootstrap.css" rel="stylesheet"/>
 <script>
+	$(document).ready(function() {
+		$("#zzz").select2();
+	});
 	
 	function modifier()
 	{
 	var valeur = document.forms['form1'].elements['zzz'].value; // Contient la valeur de l'<input />
 
-	document.location.href = '../produit/recherche?id='+valeur;
-	}
+	document.location.href = '../employe/recherche?id='+valeur;
+	};
 	
-	function creationProduit()
+	function creationEmploye()
 	{
-		document.location.href = '../create/produit';
-	}
+		document.location.href = "../createEmploye/employe";
+	};
 	
+	function importer(){
+		alert("Demande au prof, import d'excel, fichier texte ????");
+	};
+	
+	function exporter(){
+		alert("Demande au prof, en quel format export ?")
+	};
 	
 	$(document).ready(function(){
 	    $('.filterable .btn-filter').click(function(){
@@ -71,36 +81,39 @@
 </head>
 <body>
 <ul class="nav nav-tabs">
-    			<li><a href="/client/">Accueil</a></li>  
+    			<li><a href="/employe/">Accueil</a></li>  
     			<li><a href="/client/">Client</a></li>
     			<li><a href="/employe/">Employe</a></li>
     			<li><a href="/produit/">Produit</a></li>
  </ul>
  
  <ul class="nav nav-tabs">
-    			<li><a href="/produit/">Produit</a></li>  
-    			<li><a href="/produit/...">...</a></li>
+    			<li><a href="/employe/">Employe</a></li>  
+    			<li><a href="/employe/groupe">Groupe</a></li>
  </ul>
 
 <fieldset class="well the-fieldset">		
-	<td>
-			<a href="javascript:creationProduit();">
-			<input type="button" name = "creationProduit" value="Creer un nouveau produit" class="btn btn-inverse"/>
+			<a href="javascript:creationEmploye();">
+			<input type="button" name = "creationEmploye" value="Creer un nouveau employe" class="btn btn-inverse"/>
 			</a>
-		
-	</td>
+			<a href="javascript:importer();">
+			<input type="button" name = "importer" value="import" class="btn btn-inverse"/>
+			</a>
+			<a href="javascript:exporter();">
+			<input type="button" name = "exporter" value="export" class="btn btn-inverse"/>
+			</a>
 </fieldset>
 
 <!-- <fieldset class="well the-fieldset">
-	<form action="../produit/recherche" method="get" id="form1" name="form1">
+	<form action="../employe/recherche" method="get" id="form1" name="form1">
 		<table>
 			<tr>
-				<td><label> Liste de produit</label></td>
+				<td><label> Liste de employe</label></td>
 			</tr>
 			<tr>
 				<td>
 					<SELECT class="taille" id="zzz" name="zzz"  >
-							<option th:each="produit : ${produits}"  th:text="${produit.name}" th:value="${produit.id}" id="${produit.id}" value="${produit.id}"></option>
+							<option th:each="employe : ${employes}"  th:text="${employe.name}" th:value="${employe.id}" id="${employe.id}" value="${employe.id}"></option>
 					</SELECT>
 				</td>
 				<td> <a href="javascript:modifier();"> <input value="Rechercher" class="btn btn-success"/> </a> </td>
@@ -120,21 +133,23 @@
             <thead>
                 <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="Nom" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Type" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Prix" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Description" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Stock" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="prenom" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="Email" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="Adresse" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="login" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="password" disabled="disabled"/></th>
                 </tr>
 		</thead>
 		<tbody>
-			<tr th:each="produit : ${produits}">
-				<td><span th:text="${produit.name}"></span></td>
-				<td><span th:text="${produit.Typeproduit}"></span></td>
-				<td><span th:text="${produit.prix}"></span></td>
-				<td><span th:text="${produit.description}"></span></td>
-				<td><span th:text="${produit.stock}"></span></td>
-				<td><span><a th:href="@{/edit/produit(id=${produit.id})}">Editer</a></span></td>
-				<td><span><a th:href="@{/delete/produit(id=${produit.id})}">Supprimer</a></span></td>
+			<tr th:each="employe : ${employes}">
+				<td><span th:text="${employe.name}"></span></td>
+				<td><span th:text="${employe.prenom}"></span></td>
+				<td><span th:text="${employe.Email}"></span></td>
+				<td><span th:text="${employe.Adresse}"></span></td>
+				<td><span th:text="${employe.login}"></span></td>
+				<td><span th:text="${employe.password}"></span></td>
+				<td><span><a th:href="@{/edit/employe(id=${employe.id})}">Editer</a></span></td>
+				<td><span><a th:href="@{/delete/employe(id=${employe.id})}">Supprimer</a></span></td>
 			</tr>
 		</tbody>
             </table>
