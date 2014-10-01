@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="css/style.css"/>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+  <title> list</title>
+</head>
+<body>
+    
+    <a href="/create">Créer un employé</a>
+    
+    <table cellpadding="1px" cellspacing="1px" bgcolor="#FFFFFF">
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Adresse</th>
+    <th>Modification</th>
+    <tr th:each ="employe : ${employes}">
+    	<td th:text="${employe.name}" width="30px"></td>
+        <td th:text="${employe.prenom}" width="30px"></td>
+        <td th:text="${employe.login}" width="30px"></td>
+        <td th:text="${employe.password}" width="30px"></td>
+        <td th:text="${employe.email}" width="30px"></td>
+        <td th:text="${employe.adresse}" width="30px"></td>
+        <td ><a th:href="@{/edit(id=${employe.id})}">edit</a>
+         <a th:href="@{/delete(id=${employe.id})}">delete</a></td>
+    </tr>
+   </table>
+   <a href="form.html">Retour à la page d'accueil</a>
+      
+   
+</body>
+</html>
