@@ -8,6 +8,7 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="/select/select2.js"></script>
+<script src="/select/importer.js"></script>
 <link type="text/css" href="/asset/css/bootstrap.css" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/screen.css" type="text/css" media="screen" title="default" />
 
@@ -135,19 +136,6 @@
 		</li>
 		</ul>
 		
-		<ul class="select"><li><a href="#nogo"><b>Tab bord</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<div class="select_sub">
-			<ul class="sub">
-				<li><a href="#nogo">Statistique 1</a></li>
-				<li><a href="#nogo">Statistique 2</a></li>
-				<li><a href="#nogo">Statistique 3</a></li>
-			</ul>
-		</div>
-		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
-		</li>
-		</ul>
-		
 		<div class="nav-divider">&nbsp;</div>
 		                    
 		<ul class="current"><li><a href="#nogo"><b>Caisse</b><!--[if IE 7]><!--></a><!--<![endif]-->
@@ -227,6 +215,9 @@
 			<a href="javascript:creationClient();">
 			<input type="button" name = "creationClient" value="Creer un nouveau client" class="btn btn-inverse"/>
 			</a>
+			<!-- <a>
+			<input type="submit" name = "importer" value="import" class="btn btn-inverse" onclick="write_to_excel();"/>
+			</a>-->
 			<a href="javascript:importer();">
 			<input type="button" name = "importer" value="import" class="btn btn-inverse"/>
 			</a>
