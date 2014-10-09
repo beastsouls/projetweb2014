@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<link rel="stylesheet" type="text/css" href="/select/select2.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="/select/select2.js"></script>
+<link type="text/css" href="/asset/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/screen.css" type="text/css"
+	media="screen" title="default" />
+
+</head>
+<body>
+	<div id="bloc_page">
+		<!--  start nav-outer-repeat................................................................................................. START -->
+		<div class="nav-outer-repeat">
+			<!--  start nav-outer -->
+			<div class="nav-outer">
+
+				<!--  start nav -->
+				<div class="nav">
+					<div class="table">
+
+						<ul class="current">
+							<li><a href="/accueil/"><b>Accueil</b></a></li>
+						</ul>
+
+						<div class="nav-divider">&nbsp;</div>
+
+						<ul class="select">
+							<li><a href="/caisse/"><b>Caisse</b></a></li>
+						</ul>
+						<div class="nav-divider">&nbsp;</div>
+						<ul class="select">
+							<li><a href="/produit/"><b>Produit</b></a></li>
+						</ul>
+
+						<div class="nav-divider">&nbsp;</div>
+
+						<ul class="select">
+							<li><a href="/client/"><b>Client</b></a></li>
+						</ul>
+						<div class="nav-divider">&nbsp;</div>
+						<ul class="select">
+							<li><a href="#nogo"><b>Facture</b></a></li>
+						</ul>
+
+						<div class="nav-divider">&nbsp;</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div >
+	<section>
+		<article>
+			<h1>
+				<img src="images/ico_epingle.png" alt="Catégorie voyage"
+					class="ico_categorie" />les produits
+			</h1>
+			<h1></h1>
+			<form th:action="@{/caisse}" th:object="${product}" method="post">
+				<p>
+					produit: <input type="text" th:field="*{name}" />
+				</p>
+				<p>
+					<input type="submit" value="Submit" />
+				</p>
+			</form>
+
+		</article>
+		<aside>
+			<h1>LE PANIER</h1>
+			<ul>
+				<li th:each="product : ${session.panier}" th:text="${product.name}"></li>
+			</ul>
+
+		</aside>
+	</section>
+</div>
+	<footer> ICI ON VERA APRES CEUX QU ON VA METTRE </footer>
+	
+</body>
+</html>
