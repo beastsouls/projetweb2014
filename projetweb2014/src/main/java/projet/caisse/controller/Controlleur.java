@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import projet.client.model.Client;
-import projet.client.repository.ClientRepository;
 import projet.produit.model.*;
+import projet.produit.repository.*;
+
 
 @Controller
 public class Controlleur {
 
-	//@Autowired
-  //private projet.produit.repository.produitRepository produitRepository;
+	@Autowired
+	private produitRepository produitRepository;
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
@@ -41,5 +41,7 @@ public class Controlleur {
 
 		return "redirect:/";
 	}
+
+	
 
 }
