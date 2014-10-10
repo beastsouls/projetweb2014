@@ -250,7 +250,7 @@
 		<div class="clear"></div>
 		<!--  start nav-outer -->
 	</div>
-	
+
 	<!-- <div class="corp_accueil">	
 	
 	
@@ -259,18 +259,17 @@
  </div>
  </div>
  -->
- 
 
 
-<div id="main">
- <div id="menu">
-  Menu
- </div>
 
- <div id="contenu">
-  Contenu
- </div>
-</div>
+	<div id="main">
+		<div id="menu"></div>
+
+		<div id="contenu">
+		<input type="button" th:each="produit : ${produits}" th:value="${produit.name}" />
+		
+		</div>
+	</div>
 
 
 </body>

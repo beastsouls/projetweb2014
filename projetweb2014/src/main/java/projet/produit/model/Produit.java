@@ -21,7 +21,7 @@ public class Produit {
 	
 	@NotNull
     @Min(1)
-	private String Prix;
+	private double Prix;
 	
 	@Size(min=2, max=3000)
 	private String description;
@@ -49,10 +49,10 @@ public class Produit {
 	public void setTypeproduit(String typeproduit) {
 		Typeproduit = typeproduit;
 	}
-	public String getPrix() {
+	public double getPrix() {
 		return Prix;
 	}
-	public void setPrix(String prix) {
+	public void setPrix(double prix) {
 		Prix = prix;
 	}
 	public String getDescription() {
@@ -67,4 +67,14 @@ public class Produit {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	public Produit(String name, String typeproduit, double prix, String description, int stock) {
+		this.name = name;
+		Typeproduit = typeproduit;
+		Prix = prix;
+		this.description = description;
+		this.stock = stock;
+	}
+	
+	public Produit(){}
+	
 }
