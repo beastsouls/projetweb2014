@@ -69,11 +69,10 @@ public class ClientController extends WebMvcConfigurerAdapter {
 		model.addAttribute("clients", clientRepository.findAll());return "list";
 	}
 	
-	
-	@RequestMapping(value = "/accueil/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String accueil(Model model) {
-			return "form";
-	}
+		return "form";
+	}*/
 	
 	@RequestMapping(value = "/delete/client", method = RequestMethod.GET)
 	public String deleteclient(@RequestParam("id") Long id, Model model) {

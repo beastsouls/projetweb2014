@@ -39,8 +39,10 @@ public class Controlleur {
 		panier.add(product);
 		session.setAttribute("panier", panier);
 
-		return "redirect:/";
+		return "redirect:/caisse";
 	}
+	
+	
 
 	
 
