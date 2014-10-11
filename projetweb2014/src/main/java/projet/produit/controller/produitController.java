@@ -45,10 +45,11 @@ public class produitController {
 		return "listproduit";
 	}
 	
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String accueil(Model model) {
+		model.addAttribute("produits", produitRepository.findAll());
 		return "form";
-	}*/
+	}
 	
 	@RequestMapping(value = "/delete/produit", method = RequestMethod.GET)
 	public String deleteproduit(@RequestParam("id") Long id, Model model) {

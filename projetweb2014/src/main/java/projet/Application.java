@@ -2,13 +2,36 @@ package projet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
+import projet.produit.model.Produit;
+import projet.produit.repository.produitRepository;
 
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class);
+        produitRepository prepository = context.getBean(produitRepository.class);
+        
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10)); 
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));  
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+       
+
     }
 }

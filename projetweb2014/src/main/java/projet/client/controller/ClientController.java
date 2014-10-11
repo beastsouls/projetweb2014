@@ -1,5 +1,7 @@
 package projet.client.controller;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,11 +70,6 @@ public class ClientController extends WebMvcConfigurerAdapter {
 		}
 		model.addAttribute("clients", clientRepository.findAll());return "list";
 	}
-	
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String accueil(Model model) {
-		return "form";
-	}*/
 	
 	@RequestMapping(value = "/delete/client", method = RequestMethod.GET)
 	public String deleteclient(@RequestParam("id") Long id, Model model) {

@@ -69,10 +69,10 @@ public class EmployeController extends WebMvcConfigurerAdapter {
 		return "listEmploye";
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String accueil(Model model) {
 		return "form";
-	}
+	}*/
 
 	@RequestMapping(value = "/delete/employe", method = RequestMethod.GET)
 	public String deleteemploye(@RequestParam("id") Long id, Model model) {
