@@ -82,6 +82,48 @@
 	</section>
 
 	<footer> ICI ON VERA APRES CEUX QU ON VA METTRE </footer>
+	 <!-- récupérer les noms des différents produits et afficher sur les boutons du tableau 
+    	 En considérant un affichage par 5 colonnes
+    -->
+   
+   <!-- Ne rien faire si pas de produits -->
+    <table th:if="${nbProducts gt 0}">
+    
+    <!-- Gestion de l'affichage pour moins de 5 produits (donc sur une ligne) -->
+    	<tr th:if="${nbProducts lt 5}">
+    			
+    			<td th:each="i : ${#numbers.sequence(0,nbProducts-1)}">
+    				<input  type="button" th:name="${products.get(i).name}" th:value="${products.get(i).name}" onclick=""></input>
+    			</td>
+    	</tr>
+    	
+   <!-- Gestion de l'affichage pour nombre de produits multiples de 5 -->
+   
+   		<tr th:if="${nbProducts % 5 == 0}" th:each="i : ${#numbers.sequence(0,nbLignes-1)}" >
+    			
+    			<td th:if="${nbProducts ge 5}" th:each="j : ${#numbers.sequence(0,4)}">
+    				<input  type="button" th:name="${products.get(i*5+j).name}" th:value="${products.get(i*5+j).name}" onclick=""></input>
+    			</td>
+    	</tr>
+    	
+    <!-- Prise en compte du cas où la dernière ligne n'est pas complète -->
+    
+    	<div th:if="${nbProducts % 5 != 0 and nbProducts gt 5}" >
+    		<tr th:each="i : ${#numbers.sequence(0,nbLignes-2)}">	
+    			<td th:if="${nbProducts ge 5}" th:each="j : ${#numbers.sequence(0,4)}">
+    				<input  type="button" th:name="${products.get(i*5+j).name}" th:value="${products.get(i*5+j).name}" onclick=""></input>
+    			</td>
+    		</tr>	
+    		<tr>
+    			<td th:each="i : ${#numbers.sequence(0,nbProducts%5-1)}">
+    				<input  type="button" th:name="${products.get(i+5*(nbLignes-1)).name}" th:value="${products.get(i+5*(nbLignes-1)).name}" onclick=""></input>
+    			</td> 
+    	
+    	</tr>
+    	</div>
+    </table>
+	
+	
  </div>
 </body>
 </html>
