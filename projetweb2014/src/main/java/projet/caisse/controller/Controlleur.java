@@ -47,8 +47,6 @@ public class Controlleur {
 	}
 	
 	
-	
-	
 	//Réponse au clic pour ajouter un produit au panier
 	
 	@RequestMapping(value = "/ajoutPanier", method = RequestMethod.GET)
@@ -60,7 +58,7 @@ public class Controlleur {
 	}
 	
 	@RequestMapping(value = "/ajoutPanier", method = RequestMethod.POST)
-	public String produitSubmit(@ModelAttribute Produit produit, HttpSession session2, Model model) {
+	public String produitSubmit(@ModelAttribute("id") Produit produit, HttpSession session2, Model model) {
 		
 		List<Produit> panierListe = (List<Produit>) session2.getAttribute("panierListe");
 		if (panierListe == null)
