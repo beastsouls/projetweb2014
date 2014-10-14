@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import projet.produit.model.*;
 import projet.produit.repository.*;
@@ -25,17 +26,7 @@ public class Controlleur {
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
 		
-		long taille = 0;
-		ArrayList<Produit> listeProduit = (ArrayList<Produit>) produitRepository.findAll();
-		if(listeProduit.size()%5 == 0)
-			taille = listeProduit.size()/5;
-		else
-			taille = (listeProduit.size()/5) + 1;
-		
 		model.addAttribute("products", produitRepository.findAll());
-		model.addAttribute("nbProducts", produitRepository.count());
-		model.addAttribute("nbLignes", taille);
-		
 		model.addAttribute("product", new Produit());
 		return "caisse";
 	}
@@ -49,43 +40,36 @@ public class Controlleur {
 			panier = new ArrayList<Produit>();
 
 		panier.add(product);
+		System.out.println("dans le post de caisse "+panier.get(0).getName());
 		session.setAttribute("panier", panier);
 
 		return "redirect:/caisse";
 	}
 	
 	
+	
+	
+	//Réponse au clic pour ajouter un produit au panier
+	
+	@RequestMapping(value = "/ajoutPanier", method = RequestMethod.GET)
+	public String boutonProduit(@RequestParam("id") Long id, Model model) {
+		
+		model.addAttribute("produit", produitRepository.findOne(id));
+		
+		return "caisse";
+	}
+	
+	@RequestMapping(value = "/ajoutPanier", method = RequestMethod.POST)
+	public String produitSubmit(@ModelAttribute Produit produit, HttpSession session2, Model model) {
+		
+		List<Produit> panierListe = (List<Produit>) session2.getAttribute("panierListe");
+		if (panierListe == null)
+			panierListe = new ArrayList<Produit>();
 
-	//Lien vers la caisse
-	/*		@RequestMapping(value = "/caissen", method = RequestMethod.GET)
-			public String boutonsProducts(Model model) {
-				
-				long taille = 0;
-				ArrayList<Produit> listeProduit = (ArrayList<Produit>) produitRepository.findAll();
-				if(listeProduit.size()%5 == 0)
-					taille = listeProduit.size()/5;
-				else
-					taille = (listeProduit.size()/5) + 1;
-				
-				model.addAttribute("products", produitRepository.findAll());
-				model.addAttribute("nbProducts", produitRepository.count());
-				model.addAttribute("nbLignes", taille);
-				model.addAttribute("produit", new Produit());
-				return "caisse";
-			}*/
-			
-		/*	@RequestMapping(value = "/caissen", method = RequestMethod.POST)
-			public String boutonSubmit(@ModelAttribute Produit produit, HttpSession session, Model model) {
-						
-			List<Produit> panier = (List<Produit>)session.getAttribute("panier");
-						if(panier == null)
-							panier = new ArrayList<Produit>();
-						
-						panier.add(produit);
-						session.setAttribute("panier", panier);
-						
-						return "redirect:/caisse";
-					}
-	*/
+		panierListe.add(produit);
+		System.out.println("dans le post "+panierListe.get(0).getName());
+		session2.setAttribute("panierListe", panierListe);
 
+		return "redirect:/caisse";
+	}
 }

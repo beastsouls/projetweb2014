@@ -77,4 +77,8 @@ public class Produit {
 	
 	public Produit(){}
 	
+	public Produit(String name){
+		this.name = name;
+	}
+	
 }
