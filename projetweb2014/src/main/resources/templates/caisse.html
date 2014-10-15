@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link type="text/css" href="../bootstrap/css/bootstrap.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -24,7 +25,7 @@
 					<div class="table">
 
 						<ul class="current">
-							<li><a href="/accueil/"><b>Accueil</b></a></li>
+							<li><a href="/"><b>Accueil</b></a></li>
 						</ul>
 
 						<div class="nav-divider">&nbsp;</div>
@@ -54,55 +55,65 @@
 			</div>
 		</div>
 
-	<section>
+	<section style="margin-top: 30px;">
 		<article>
 			<h1>
-				<img src="images/ico_epingle.png" alt="Catégorie voyage"
-					class="ico_categorie" />les produits
+				<img src="images/ico_epingle.png" alt="Catégorie voyage" class="ico_categorie" />
+				les produits
 			</h1>
-			<h1></h1>
-			<form th:action="@{/caisse}" th:object="${product}" method="post">
-				<p>
-					produit: <input type="text" th:field="*{name}" />
-				</p>
-				<p>
-					<input type="submit" value="Submit" />
-				</p>
-			</form>
+			
+			 <!-- récupérer les noms des différents produits et afficher sur les boutons du tableau -->
+
+    <div style=" border: 2px solid #a1a1a1; padding: 10px 20px; background: #dddddd; width: 350px; border-radius: 15px; ">
+    	<span th:each="produit : ${products}">
+    	<form style="display: inline" th:action="@{/ajoutPanier(id=${produit.id})}" th:object="${produit}" method="post">
+ 			<input type="submit"  th:value="${produit.name}" style="width: 100px; height: 30px;" />
+ 		</form>
+ 		</span>
+ 	</div>
+<!-- 			<h1></h1> -->
+<!-- 			<form th:action="@{/caisse}" th:object="${product}" method="post"> -->
+<!-- 				<p> -->
+<!-- 					produit: <input type="text" th:field="*{name}" /> -->
+<!-- 				</p> -->
+<!-- 				<p> -->
+<!-- 					<input type="submit" value="Submit" /> -->
+<!-- 				</p> -->
+<!-- 			</form> -->
 
 		</article>
 
-		<aside>
-			<h1>LE PANIER</h1>
-			<ul>
-				<li th:each="product : ${session.panier}" th:text="${product.name}"></li>
-			</ul>
+<!-- 		<aside> -->
+<!-- 			<h1>LE PANIER</h1> -->
+<!-- 			<ul> -->
+<!-- 				<li th:each="product : ${session.panier}" th:text="${product.name}"></li> -->
+<!-- 			</ul> -->
 
-		</aside>
+<!-- 		</aside> -->
 		<aside>
 			<h1>LE PANIER</h1>
 			
 			<table>
 				<tr th:each="product : ${session.panierListe}">
-					<td th:text="${product.name}"></td>
-					<td th:text="${product.Prix}"></td>
-					<td th:text="${product.Prix}"></td>
+					<td th:text="${product.name}" style="padding: 5px;"></td>
+					<td th:text="${product.Prix}" style="padding: 5px;"></td>
+<!-- 					<td th:text="${product.Prix}"></td> -->
 				</tr>
 			</table>
 
 		</aside>
 	</section>
 	
-	<footer> ICI ON VERA APRES CE QU ON VA METTRE </footer>
-	 <!-- récupérer les noms des différents produits et afficher sur les boutons du tableau -->
+<!-- 	<footer> ICI ON VERA APRES CE QU ON VA METTRE </footer> -->
+ 	 <!-- récupérer les noms des différents produits et afficher sur les boutons du tableau --> 
 
-    <div style=" border: 2px solid #a1a1a1; padding: 10px 20px; background: #dddddd; width: 350px; border-radius: 15px;">
-    	<span th:each="produit : ${products}">
-    	<form style="display: inline" th:action="@{/ajoutPanier(id=${produit.id})}" th:object="${produit}" method="post">
- 			<input type="submit"  th:value="${produit.name}" />
- 		</form>
- 		</span>
- 	</div>
+<!--     <div style=" border: 2px solid #a1a1a1; padding: 10px 20px; background: #dddddd; width: 350px; border-radius: 15px;"> -->
+<!--     	<span th:each="produit : ${products}"> -->
+<!--     	<form style="display: inline" th:action="@{/ajoutPanier(id=${produit.id})}" th:object="${produit}" method="post"> -->
+<!--  			<input type="submit"  th:value="${produit.name}" /> -->
+<!--  		</form> -->
+<!--  		</span> -->
+<!--  	</div> -->
 
  </div>
 </body>

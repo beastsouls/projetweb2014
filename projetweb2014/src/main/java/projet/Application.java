@@ -27,7 +27,7 @@ public class Application {
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
-        prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
+        prepository.save(new Produit("Banane", "Nourriture", 95.0 , "banane" , 75));
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
