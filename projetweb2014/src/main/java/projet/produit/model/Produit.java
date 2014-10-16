@@ -30,6 +30,7 @@ public class Produit {
     @Min(0)
 	private int stock;
 	
+	private int qt;
 	
 	public long getId() {
 		return id;
@@ -79,6 +80,12 @@ public class Produit {
 	
 	public Produit(String name){
 		this.name = name;
+	}
+	public int getQt() {
+		return qt;
+	}
+	public void setQt(int qt) {
+		this.qt = qt;
 	}
 	
 }

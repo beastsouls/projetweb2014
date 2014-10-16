@@ -28,18 +28,19 @@ public class Controlleur {
 		
 		model.addAttribute("products", produitRepository.findAll());
 		model.addAttribute("product", new Produit());
+		
 		return "caisse";
 	}
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.POST)
 	public String productSubmit(@ModelAttribute Produit product,
 			HttpSession session, Model model) {
-
-		List<Produit> panier = (List<Produit>) session.getAttribute("panier");
+       	List<Produit> panier = (List<Produit>) session.getAttribute("panier");
 		if (panier == null)
 			panier = new ArrayList<Produit>();
-
+        
 		panier.add(product);
+		
 		System.out.println("dans le post de caisse "+panier.get(0).getName());
 		session.setAttribute("panier", panier);
 
@@ -63,11 +64,30 @@ public class Controlleur {
 		List<Produit> panierListe = (List<Produit>) session2.getAttribute("panierListe");
 		if (panierListe == null)
 			panierListe = new ArrayList<Produit>();
-
+        
 		panierListe.add(produit);
 		System.out.println("dans le post "+panierListe.get(0).getName());
 		session2.setAttribute("panierListe", panierListe);
 
 		return "redirect:/caisse";
 	}
+	
+	
+	@RequestMapping(value = "/calcul", method = RequestMethod.GET)
+	public String calculpanierForm(@RequestParam("id") Long id, Model model) {
+		
+		model.addAttribute("produit", produitRepository.findOne(id));
+		
+		return "caisse";
+	}
+	
+	@RequestMapping(value = "/calcul", method = RequestMethod.POST)
+	public String calculpanierSubmit(@ModelAttribute("id") Produit produit, Model model) {
+		
+		
+		model.addAttribute("qant", produit.getQt());
+
+		return "redirect:/caisse";
+	}
+	
 }

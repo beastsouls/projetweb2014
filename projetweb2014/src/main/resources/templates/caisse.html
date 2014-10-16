@@ -12,6 +12,15 @@
 <link rel="stylesheet" href="../css/screen.css" type="text/css"
 	media="screen" title="default" />
 
+
+<SCRIPT LANGUAGE="javascript">
+function afficher(form2) {
+var testin =document.form2.input.value;
+alert(testin);
+document.form3.output.value=testin
+alert(document.form3.output.value);
+}
+</SCRIPT>
 </head>
 <body>
 	<div id="bloc_page">
@@ -68,6 +77,7 @@
     	<span th:each="produit : ${products}">
     	<form style="display: inline" th:action="@{/ajoutPanier(id=${produit.id})}" th:object="${produit}" method="post">
  			<input type="submit"  th:value="${produit.name}" style="width: 100px; height: 30px;" />
+ 			
  		</form>
  		</span>
  	</div>
@@ -95,9 +105,26 @@
 			
 			<table>
 				<tr th:each="product : ${session.panierListe}">
-					<td th:text="${product.name}" style="padding: 5px;"></td>
-					<td th:text="${product.Prix}" style="padding: 5px;"></td>
-<!-- 					<td th:text="${product.Prix}"></td> -->
+					<td>
+					<!-- 	<form id="calculQt"> -->
+							
+					<!-- 	</form> -->
+					</td>
+					
+					<td>
+					<form name="form2">
+						<input type="text"  maxlength="2" size="2" value="1" name="input" onKeyPress="if(event.keyCode==13)afficher(form2)"/>
+<!-- 	 					<input type="text"  maxlength="2" size="2"  name="output"/> -->
+					</form>
+					</td>
+						<td th:text="${product.name}" style="padding: 5px;"></td>
+						<td th:text="${product.Prix}+'euros'" style="padding: 5px;"></td>
+						<form name="form3">
+ 						<td><input type="text"  maxlength="2" size="2"  name="output"/></td> 
+ 						</form>
+ 					<!-- <td th:text="${product.qt}" style="padding: 5px;"></td> -->
+<!--  					<td name="output" style="padding: 5px;"></td> -->
+<!--  					<td name="tput" style="padding: 5px;"></td> -->
 				</tr>
 			</table>
 
