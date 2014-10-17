@@ -30,7 +30,7 @@ public class Produit {
     @Min(0)
 	private int stock;
 	
-	private int qt;
+	private int qt=0;
 	
 	public long getId() {
 		return id;
