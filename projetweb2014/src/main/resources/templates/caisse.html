@@ -106,13 +106,14 @@ alert(document.form3.output.value);
 			<table>
 				<tr th:each="product : ${session.panierListe}">
 					<td>
-					<form th:action="@{/calcul(id=${product.id})}" th:object="${product}" method="post" >
+					<form th:action="@{/calcul(id=${product.id})}" th:object="${product}" method="post" style="width: auto;">
 						<input type="text" th:field="*{qt}" maxlength="2" size="2" value="1"/>
 					</form>
 					</td>
 						<td th:text="${product.name}" style="padding: 5px;"></td>
-						<td th:text="${product.Prix}+'euros'" style="padding: 5px;"></td>
+						<td th:text="${product.Prix}+' euros'" style="padding: 5px;"></td>
  						<td th:text="${product.qt}" style="padding: 5px;"></td> 
+ 						<td th:text="${product.Prix} * ${product.qt} +' euros'" style="padding: 5px;"></td> 
 				</tr>
 			</table>
 
