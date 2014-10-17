@@ -7,14 +7,7 @@
 </head>
 <body>
 <h1>Liste des factures</h1>
-   <ul>
-    	<li th:each="facure : ${factures}" >
-    	
-    		<span th:text="${facture.id}"></span>
-    		<span><a th:href="@{/edit(id=${product.id})}">edit</a></span>
-    		<span><a th:href="@{/delete(id=${product.id})}">delete</a></span> 
-    	</li>
-    </ul>
+ 
 </body>
 </html>
 

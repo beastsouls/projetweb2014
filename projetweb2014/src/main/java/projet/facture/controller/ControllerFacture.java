@@ -14,16 +14,16 @@ import projet.facture.repository.FactureRepository;
 @Controller
 public class ControllerFacture {
 	
-	@Autowired
-	private FactureRepository facureRepository;
-
-	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
-	public String createForm(Model model) {
-		
-		model.addAttribute("factures", facureRepository.findAll());
-		model.addAttribute("facture", new FactureModel());
-		
-		return "caisse";
-	}
+//	@Autowired
+//	private FactureRepository facureRepository;
+//
+//	@RequestMapping(value = "", method = RequestMethod.GET)
+//	public String createForm(Model model) {
+//		
+//		//model.addAttribute("factures", facureRepository.findAll());
+//		model.addAttribute("facture", new FactureModel());
+//		
+//		return "caisse";
+//	}
 
 }
