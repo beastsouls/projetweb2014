@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Facture</title>
+</head>
+<body>
+<h1>Liste des factures</h1>
+   <ul>
+    	<li th:each="facure : ${factures}" >
+    	
+    		<span th:text="${facture.id}"></span>
+    		<span><a th:href="@{/edit(id=${product.id})}">edit</a></span>
+    		<span><a th:href="@{/delete(id=${product.id})}">delete</a></span> 
+    	</li>
+    </ul>
+</body>
+</html>
+
