@@ -30,8 +30,17 @@ public class Produit {
     @Min(0)
 	private int stock;
 	
-	private int qt=0;
+	private int qt;
 	
+	private int total =0;
+	
+
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public long getId() {
 		return id;
 	}
