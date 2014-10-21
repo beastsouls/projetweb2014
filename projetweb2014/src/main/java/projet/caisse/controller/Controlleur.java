@@ -18,7 +18,7 @@ public class Controlleur {
 	@Autowired
 	private produitRepository produitRepository;
 	private List<Produit> panierListe;
-//	private int index = 1;
+	private int  index ;
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
@@ -51,10 +51,12 @@ public class Controlleur {
 		if (panierListe == null)
 			{panierListe = new ArrayList<Produit>(); }
 		
-		panierListe.add(produit);
+		panierListe.add(index,produit);
+		System.out.println("on a ajouter le produit a l'index " + index +" dans le panier");
+		produit.setCpt(index);
+		System.out.println("le compteur du produit vaut " + index );
 		
 		//session.setAttribute("index", produit.getId());
-//		produit.setCpt((int)produit.getId());
 //		System.out.println(" on met a jour l'index " + produit.getCpt());
 		session.setAttribute("panierListe", panierListe);
 		return "redirect:/caisse";
@@ -67,6 +69,8 @@ public class Controlleur {
 	//
 	// return "caisse";
 	// }
+	
+	
 	@RequestMapping(value = "/calcul", method = RequestMethod.POST)
 	public String calculpanierSubmit(@RequestParam("qt") int qt,@ModelAttribute("id") Produit produit, Model model) {
 		System.out.println(produit.getId());
@@ -75,8 +79,13 @@ public class Controlleur {
 		produitRepository.save(produit);
 		System.out.println(produit.getQt());
 //		panierListe.set(produit.getCpt(), produit);
+		System.out.println("on va supprimer le produit " + produit.getName());
+		System.out.println("l'index du produit que l'on veut supprimer est " + index);
+		System.out.println(" le produit est a l'index " + produit.getCpt());
 		panierListe.remove(produit);
-		panierListe.set((int) produit.getId()-1, produit);
+		System.out.println("on va mettre le produit " + produit.getName() + " qui a l'index " + produit.getCpt() + "  a l'index " + index ); 
+		panierListe.set(index, produit);
+		index++;
 		//model.addAttribute("qant", produit.getQt());
 		return "redirect:/caisse";
 	}

@@ -34,7 +34,15 @@ public class Produit {
 	
 	private int total =0;
 	
+	private int cpt;
+	
 
+	public int getCpt() {
+		return cpt;
+	}
+	public void setCpt(int cpt) {
+		this.cpt = cpt;
+	}
 	public int getTotal() {
 		return total;
 	}
