@@ -30,7 +30,7 @@ public class Produit {
     @Min(0)
 	private int stock;
 	
-	private int qt;
+//	private int qt;
 	
 	private int total =0;
 	
@@ -98,11 +98,12 @@ public class Produit {
 	public Produit(String name){
 		this.name = name;
 	}
-	public int getQt() {
-		return qt;
-	}
-	public void setQt(int qt) {
-		this.qt = qt;
-	}
+	
+//	public int getQt() {
+//		return qt;
+//	}
+//	public void setQt(int qt) {
+//		this.qt = qt;
+//	}
 	
 }
