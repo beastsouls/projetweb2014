@@ -83,10 +83,21 @@ public class Controlleur {
 			total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
 //			System.out.print("la somme s'eleve a " + total + "  apres le " + i + "e element \n");
 		
-		prodQuantity.setSommeTotalFacture(total);
-		
+		//prodQuantity.setSommeTotalFacture(total);
+		session.setAttribute("total", total);
 		
 		session.setAttribute("panierListe", panierListe);
+		return "redirect:/caisse";
+	}
+	
+	@RequestMapping(value = "/resetPanier", method = RequestMethod.POST)
+	public String resetpanierSubmit(Model model, HttpSession session) {
+		//System.out.println(id);
+		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
+		panierListe = new LinkedHashMap<Long,ProduitQuantity>();
+		total=0;
+		session.setAttribute("panierListe", panierListe);
+		session.setAttribute("total", total);
 		return "redirect:/caisse";
 	}
 }

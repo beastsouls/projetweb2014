@@ -119,8 +119,21 @@
 				<h1>Total HT</h1>
 
 				<table>
-					<tr th:each="ProduitQuantity : ${session.panierListe}">
-						<td th:text="${ProduitQuantity.value.sommeTotalFacture}"></td> 
+					<tr >
+						<td th:text= "${session.total}"></td> 
+					</tr>
+					
+				</table>
+			</aside>
+			
+			<aside class="resetpanier">
+				<table>
+					<tr>
+					<td>
+						<form th:action ="@{/resetPanier}" method="post" style="width: auto;">
+						<td><input type="submit" name= "reset" value="reset" /></td>
+						</form>
+					</td>
 					</tr>
 				</table>
 			</aside>
