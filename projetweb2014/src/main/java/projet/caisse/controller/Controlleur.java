@@ -73,11 +73,22 @@ public class Controlleur {
 	
 	@RequestMapping(value = "/calcul", method = RequestMethod.POST)
 	public String calculpanierSubmit(@RequestParam("qt") int qt,@RequestParam("id") Long id, Model model, HttpSession session) {
-		System.out.println(id);
+		//System.out.println(id);
 		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
 		ProduitQuantity prodQuantity = panierListe.get(id);
 		prodQuantity.setQuantity(qt);
 		prodQuantity.setSomme(qt * prodQuantity.getElementPanier().getPrix());
+		//prodQuantity.setSommeTotalFacture(prodQuantity.getSommeTotalFacture() + prodQuantity.getSomme());
+		
+		double total=0;
+		for(int i = 0; i< panierListe.size(); i++)
+		{
+			total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
+//			System.out.print("la somme s'eleve a " + total + "  apres le " + i + "e element \n");
+		}
+		prodQuantity.setSommeTotalFacture(total);
+		
+		
 		session.setAttribute("panierListe", panierListe);
 		return "redirect:/caisse";
 	}

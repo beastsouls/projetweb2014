@@ -6,8 +6,15 @@ public class ProduitQuantity {
 	private Produit elementPanier;
 	private int quantity = 0;
 	private double somme = 0;
+	private double sommeTotalFacture = 0; 
 	
 	
+	public double getSommeTotalFacture() {
+		return sommeTotalFacture;
+	}
+	public void setSommeTotalFacture(double sommeTotalFacture) {
+		this.sommeTotalFacture = sommeTotalFacture;
+	}
 	public double getSomme() {
 		return somme;
 	}

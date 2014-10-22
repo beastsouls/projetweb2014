@@ -107,22 +107,23 @@
 								<td th:text="${ProduitQuantity.value.somme}  +' euros'" style="padding: 5px;"></td>
 							</form>
 						</td>
-						<!-- 						<td th:text="${product.id}" style="padding: 5px;"></td>  -->
-					</tr>
+<!-- 						<tr> -->
+<!-- 								<td th:text="${ProduitQuantity.value.sommeTotalFacture}"></td>  -->
+<!-- 						</tr> -->
+						</tr>
 				</table>
 
 			</aside>
+			
+			<aside class="total">
+				<h1>Total HT</h1>
 
-			<!-- 		<aside> -->
-			<!-- 			<h1>Total </h1> -->
-			<!-- 			<table> -->
-			<!-- 				<tr th:each="product : ${session.panierListe}"> -->
-			<!-- 					<td th:value="${product.total} = ${product.total} + ${product.Prix} * ${product.qt}"></td>  -->
-			<!-- 					<td th:text = "${product.total}"></td> -->
-			<!-- 				</tr> -->
-			<!-- 			</table> -->
-
-			<!-- 		</aside> -->
+				<table>
+					<tr th:each="ProduitQuantity : ${session.panierListe}">
+						<td th:text="${ProduitQuantity.value.sommeTotalFacture}"></td> 
+					</tr>
+				</table>
+			</aside>
 		</section>
 
 		<!-- 	<footer> ICI ON VERA APRES CE QU ON VA METTRE </footer> -->
