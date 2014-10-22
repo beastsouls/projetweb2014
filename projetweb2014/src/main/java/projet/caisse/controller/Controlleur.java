@@ -24,7 +24,7 @@ public class Controlleur {
 	@Autowired
 	private produitRepository produitRepository;
 	private Map<Long,ProduitQuantity> panierListe;
-	private int  index ;
+	private double total=0;
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
@@ -80,12 +80,9 @@ public class Controlleur {
 		prodQuantity.setSomme(qt * prodQuantity.getElementPanier().getPrix());
 		//prodQuantity.setSommeTotalFacture(prodQuantity.getSommeTotalFacture() + prodQuantity.getSomme());
 		
-		double total=0;
-		for(int i = 0; i< panierListe.size(); i++)
-		{
 			total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
 //			System.out.print("la somme s'eleve a " + total + "  apres le " + i + "e element \n");
-		}
+		
 		prodQuantity.setSommeTotalFacture(total);
 		
 		
