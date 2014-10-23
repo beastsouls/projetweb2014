@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import projet.client.model.Client;
+import projet.client.repository.ClientRepository;
 import projet.produit.model.Produit;
 import projet.produit.repository.produitRepository;
 
@@ -15,6 +17,7 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class);
         produitRepository prepository = context.getBean(produitRepository.class);
+        ClientRepository crepository = context.getBean(ClientRepository.class);
         
         prepository.save(new Produit("Orange", "Nourriture", 10.0 , "orange" , 10));
         prepository.save(new Produit("Pomme", "Nourriture", 10.0 , "orange" , 10));
@@ -33,5 +36,13 @@ public class Application {
         prepository.save(new Produit("pamplemousse", "Nourriture", 10.0 , "orange" , 10));
        
 
+        crepository.save(new Client("jean","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("pierre","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("sophie","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("lucie","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("boris","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("lol","pdg", "test" , "n@gmail.com", "test"));
+        crepository.save(new Client("test","pdg", "test" , "n@gmail.com", "test"));
+        
     }
 }

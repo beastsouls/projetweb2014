@@ -53,6 +53,12 @@ public class ClientController extends WebMvcConfigurerAdapter {
 		return "list";
 	}
 	
+	@RequestMapping(value="/create/clientPanier")
+	public String retourPanier()
+	{
+		
+		return "/caisse";
+	}
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {

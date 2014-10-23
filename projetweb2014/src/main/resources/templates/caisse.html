@@ -146,29 +146,20 @@
 					</tr>
 				</table>
 			</aside>
-			
-			
-			<aside>
-				<table>
-					<tr>
-					<td>
-<!-- 						<form th:action ="@{/AjouterClientFacture}" method="post" style="width: auto;"> -->
-<!-- 						<td><input type="submit" name= "reset" value="reset" /></td> -->
-							<td>
-							<SELECT class="taille" id="zzz" name="zzz"  >
-								<option th:each="client : ${clients}"  th:text="${client.name}" ></option>
-							</SELECT>
-							</td>
-<!-- 							<td><span><input type ="submit" th:href="@{../create/client}" name= "Ajout" value="Creer un nouveau client"/></span></td> -->
-						
-								<a th:href="@{/create/client}" class="btn btn-inverse">Creer un nouveau client</a>
-								
-<!-- 						</form> -->
-					</td>
-					</tr>
-				</table>
-			</aside>
 		</section>
+		
+		<table class="clientPanier">
+			<tr>
+				<td>
+					<SELECT class="taille" id="zzz" name="zzz"  >
+						<option th:each="client : ${clients}"  th:text="${client.name}" ></option>
+					</SELECT>
+				</td>
+ 				<td>
+ 					<a th:href="@{/create/clientPanier}" class="btn btn-inverse">Creer un nouveau client</a>
+ 				</td>
+			</tr>
+		</table>
 
 		<!-- 	<footer> ICI ON VERA APRES CE QU ON VA METTRE </footer> -->
 		<!-- récupérer les noms des différents produits et afficher sur les boutons du tableau -->

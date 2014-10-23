@@ -577,7 +577,7 @@ disabled look for disabled choices in the results dropdown
 
 .select2-offscreen, .select2-offscreen:focus {
     clip: rect(0 0 0 0) !important;
-    width: 1px !important;
+    width: 100px !important;
     height: 1px !important;
     border: 0 !important;
     margin: 0 !important;
@@ -587,6 +587,7 @@ disabled look for disabled choices in the results dropdown
     outline: 0 !important;
     left: 0px !important;
     top: 0px !important;
+   
 }
 
 .select2-display-none {

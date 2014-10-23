@@ -34,6 +34,8 @@ public class Client {
 	public long getId() {
 		return id;
 	}
+	
+	
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -69,6 +71,17 @@ public class Client {
 	}
 	
 	
+	public  Client(String name, String role, String compagnie, String email, String adresse)
+	{
+		this.role=role;
+		this.Adresse=adresse;
+		this.compagnie=compagnie;
+		this.name=name;
+		this.Email=email;
+	}
+	
+	
+	public  Client() {}
 
 	
 }

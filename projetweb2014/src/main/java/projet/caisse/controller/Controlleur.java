@@ -77,7 +77,7 @@ public class Controlleur {
 	
 	
 	@RequestMapping(value = "/calcul", method = RequestMethod.POST)
-	public String calculpanierSubmit(@RequestParam("qt") int qt,@RequestParam("id") Long id, Model model, HttpSession session) {
+	public String calculpanierSubmit(@RequestParam("qt") int qt,@RequestParam("id") Long id, Model model, HttpSession session , Produit produit) {
 		//System.out.println(id);
 		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
 		ProduitQuantity prodQuantity = panierListe.get(id);
@@ -85,9 +85,15 @@ public class Controlleur {
 		prodQuantity.setSomme(qt * prodQuantity.getElementPanier().getPrix());
 		//prodQuantity.setSommeTotalFacture(prodQuantity.getSommeTotalFacture() + prodQuantity.getSomme());
 		
-			total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
-//			System.out.print("la somme s'eleve a " + total + "  apres le " + i + "e element \n");
-		
+//		if(!panierListe.containsKey(prodQuantity.getElementPanier().getId())){
+//			total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
+////			System.out.print("la somme s'eleve a " + total + "  apres le " + i + "e element \n");
+//		}
+//		else
+//		{
+//			total =total  - panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
+//		}
+		total =total  + panierListe.get(prodQuantity.getElementPanier().getId()).getSomme();
 		//prodQuantity.setSommeTotalFacture(total);
 		session.setAttribute("total", total);
 		
