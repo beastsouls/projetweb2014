@@ -152,18 +152,18 @@
 				<table>
 					<tr>
 					<td>
-						<form th:action ="@{/AjouterClientFacture}" method="post" style="width: auto;">
+<!-- 						<form th:action ="@{/AjouterClientFacture}" method="post" style="width: auto;"> -->
 <!-- 						<td><input type="submit" name= "reset" value="reset" /></td> -->
 							<td>
 							<SELECT class="taille" id="zzz" name="zzz"  >
-								<option th:each="client : ${session.clients}"  th:text="${client.name}" th:value="${client.id}" id="${client.id}" value="${client.id}" ></option>
+								<option th:each="client : ${clients}"  th:text="${client.name}" ></option>
 							</SELECT>
 							</td>
 <!-- 							<td><span><input type ="submit" th:href="@{../create/client}" name= "Ajout" value="Creer un nouveau client"/></span></td> -->
-						<a href="javascript:creationClient();">
-								<input type="submit" name = "creationClient" value="Creer un nouveau client" />
-						</a>
-						</form>
+						
+								<a th:href="@{/create/client}" class="btn btn-inverse">Creer un nouveau client</a>
+								
+<!-- 						</form> -->
 					</td>
 					</tr>
 				</table>

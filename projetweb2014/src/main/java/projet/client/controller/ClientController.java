@@ -100,24 +100,13 @@ public class ClientController extends WebMvcConfigurerAdapter {
         registry.addViewController("/list").setViewName("list");
     }*/
 
-	@RequestMapping(value = "/AjouterClientFacture", method = RequestMethod.POST)
-	public String AjouterClientSubmit( Model model, HttpSession session) {
-		System.out.println("RENTRE DANS AJOUT CLIENT DE LA FACTURE");
-		//return "create";
-		if(clientRepository.count()==0)
-		{
-			return "redirect:/create/client";
-		}
-		else{
-		//model.addAttribute("clients", clientRepository.findAll());
-		session.setAttribute("clients",  clientRepository.findAll());
-		for(int i =0; i< clientRepository.count(); i++)
-		{
-			System.out.println(clientRepository.toString());
-		}
-		return "redirect:/caisse";
-		}
-	}
+//	@RequestMapping(value = "/AjouterClientFacture", method = RequestMethod.POST)
+//	public String AjouterClientSubmit( Model model, HttpSession session) {
+//		
+//		session.setAttribute("clients",  clientRepository.findAll());
+//		return "redirect:/caisse";
+//		//}
+//	}
     
 
 }

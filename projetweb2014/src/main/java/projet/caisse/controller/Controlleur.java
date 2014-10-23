@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import projet.client.repository.ClientRepository;
 import projet.produit.model.*;
 import projet.produit.repository.*;
 
@@ -25,10 +26,14 @@ public class Controlleur {
 	private produitRepository produitRepository;
 	private Map<Long,ProduitQuantity> panierListe;
 	private double total=0;
+	
+	@Autowired
+	private ClientRepository clientRepository;
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
 		model.addAttribute("products", produitRepository.findAll());
+		model.addAttribute("clients",  clientRepository.findAll());
 		model.addAttribute("product", new Produit());
 		return "caisse";
 	}
