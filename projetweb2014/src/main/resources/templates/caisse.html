@@ -4,14 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/select/select2.css" />
 <link type="text/css" href="../bootstrap/css/bootstrap.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="/select/select2.js"></script>
-<link rel="stylesheet" href="../css/screen.css" type="text/css"
-	media="screen" title="default" />
-
+<link rel="stylesheet" href="../css/screen.css" type="text/css" media="screen" title="default" />
+<script>
+	$(document).ready(function() {
+		$("#zzz").select2();
+	});
+	
+	function creationClient()
+	{
+		document.location.href = "../create/client";
+	};
+</script>
 </head>
 <body>
 	<div id="bloc_page">
@@ -132,6 +141,28 @@
 					<td>
 						<form th:action ="@{/resetPanier}" method="post" style="width: auto;">
 						<td><input type="submit" name= "reset" value="reset" /></td>
+						</form>
+					</td>
+					</tr>
+				</table>
+			</aside>
+			
+			
+			<aside>
+				<table>
+					<tr>
+					<td>
+						<form th:action ="@{/AjouterClientFacture}" method="post" style="width: auto;">
+<!-- 						<td><input type="submit" name= "reset" value="reset" /></td> -->
+							<td>
+							<SELECT class="taille" id="zzz" name="zzz"  >
+								<option th:each="client : ${session.clients}"  th:text="${client.name}" th:value="${client.id}" id="${client.id}" value="${client.id}" ></option>
+							</SELECT>
+							</td>
+<!-- 							<td><span><input type ="submit" th:href="@{../create/client}" name= "Ajout" value="Creer un nouveau client"/></span></td> -->
+						<a href="javascript:creationClient();">
+								<input type="submit" name = "creationClient" value="Creer un nouveau client" />
+						</a>
 						</form>
 					</td>
 					</tr>

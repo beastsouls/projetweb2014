@@ -1,7 +1,12 @@
 package projet.client.controller;
 
+import java.awt.Window;
+import java.awt.event.WindowStateListener;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import projet.client.model.Client;
 import projet.client.repository.ClientRepository;
+import projet.produit.model.ProduitQuantity;
 
 
 @Controller
@@ -94,7 +100,24 @@ public class ClientController extends WebMvcConfigurerAdapter {
         registry.addViewController("/list").setViewName("list");
     }*/
 
-  
+	@RequestMapping(value = "/AjouterClientFacture", method = RequestMethod.POST)
+	public String AjouterClientSubmit( Model model, HttpSession session) {
+		System.out.println("RENTRE DANS AJOUT CLIENT DE LA FACTURE");
+		//return "create";
+		if(clientRepository.count()==0)
+		{
+			return "redirect:/create/client";
+		}
+		else{
+		//model.addAttribute("clients", clientRepository.findAll());
+		session.setAttribute("clients",  clientRepository.findAll());
+		for(int i =0; i< clientRepository.count(); i++)
+		{
+			System.out.println(clientRepository.toString());
+		}
+		return "redirect:/caisse";
+		}
+	}
     
 
 }
