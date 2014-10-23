@@ -57,7 +57,7 @@ public class ClientController extends WebMvcConfigurerAdapter {
 	public String retourPanier()
 	{
 		
-		return "/caisse";
+		return "createCPanier";
 	}
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
