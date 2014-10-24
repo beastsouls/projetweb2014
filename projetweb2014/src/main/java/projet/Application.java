@@ -1,9 +1,12 @@
 package projet;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
 
 import projet.client.model.Client;
 import projet.client.repository.ClientRepository;
@@ -43,6 +46,7 @@ public class Application {
         crepository.save(new Client("boris","pdg", "test" , "n@gmail.com", "test"));
         crepository.save(new Client("lol","pdg", "test" , "n@gmail.com", "test"));
         crepository.save(new Client("test","pdg", "test" , "n@gmail.com", "test"));
+        
         
     }
 }

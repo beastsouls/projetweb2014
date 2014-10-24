@@ -1,7 +1,6 @@
 package projet.caisse.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import projet.CodePromo.model.CodePromo;
+import projet.CodePromo.repository.CodePromoRepository;
 import projet.client.repository.ClientRepository;
-import projet.produit.model.*;
-import projet.produit.repository.*;
+import projet.produit.model.Produit;
+import projet.produit.model.ProduitQuantity;
+import projet.produit.repository.produitRepository;
 
 @Controller
 public class Controlleur {
@@ -29,11 +31,15 @@ public class Controlleur {
 	
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	@Autowired
+	private CodePromoRepository CPrepository;
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.GET)
 	public String createForm(Model model) {
 		model.addAttribute("products", produitRepository.findAll());
 		model.addAttribute("clients",  clientRepository.findAll());
+		model.addAttribute("codePromos",  CPrepository.findAll());
 		model.addAttribute("product", new Produit());
 		return "caisse";
 	}
@@ -108,6 +114,21 @@ public class Controlleur {
 		panierListe = new LinkedHashMap<Long,ProduitQuantity>();
 		total=0;
 		session.setAttribute("panierListe", panierListe);
+		session.setAttribute("total", total);
+		return "redirect:/caisse";
+	}
+	
+	@RequestMapping(value = "/validCode", method = RequestMethod.GET)
+	public String testCodeSubmit(@RequestParam("id") Long id, @RequestParam("codepromos") String code, Model model, HttpSession session) {
+		
+		for(int i=0; i< CPrepository.count(); i++)
+		{
+			if(CPrepository.findOne(id).getCode() == code)
+			{
+				total = total - CPrepository.findOne(id).getMontant();
+			}
+		}
+		
 		session.setAttribute("total", total);
 		return "redirect:/caisse";
 	}

@@ -16,10 +16,6 @@
 		$("#zzz").select2();
 	});
 	
-	function creationClient()
-	{
-		document.location.href = "../create/client";
-	};
 </script>
 </head>
 <body>
@@ -48,6 +44,14 @@
 						</ul>
 
 						<div class="nav-divider">&nbsp;</div>
+		                    
+						<ul class="current"><li><a href="/codePromo/"><b>Code Promo</b></a></li>
+						</ul>
+						
+						<div class="nav-divider">&nbsp;</div>
+
+						
+						
 
 						<ul class="select">
 							<li><a href="/client/"><b>Client</b></a></li>
@@ -101,6 +105,7 @@
 			<!-- 			</ul> -->
 
 			<!-- 		</aside> -->
+		
 			<aside>
 				<h1>LE PANIER</h1>
 
@@ -116,50 +121,95 @@
 								<td th:text="${ProduitQuantity.value.somme}  +' euros'" style="padding: 5px;"></td>
 							</form>
 						</td>
-<!-- 						<tr> -->
-<!-- 								<td th:text="${ProduitQuantity.value.sommeTotalFacture}"></td>  -->
-<!-- 						</tr> -->
+					</tr>
+						<tr> 
+ 							<td>
+								<form th:action ="@{/resetPanier}" method="post" style="width: auto;"> 
+									<center><td><input type="submit" name= "reset" value="Vider le panier" /></td></center>
+								</form>
+							</td>
 						</tr>
 				</table>
 
 			</aside>
 			
-			<aside class="total">
-				<h1>Total HT</h1>
+<!-- 			<aside class="total"> -->
+<!-- 				<h1>Total HT</h1> -->
 
-				<table>
-					<tr >
-						<td th:text= "${session.total}"></td> 
-					</tr>
+<!-- 				<table> -->
+<!-- 					<tr > -->
+<!-- 						<td th:text= "${session.total}"></td>  -->
+<!-- 					</tr> -->
 					
-				</table>
-			</aside>
+<!-- 				</table> -->
+<!-- 			</aside> -->
 			
-			<aside class="resetpanier">
-				<table>
-					<tr>
-					<td>
-						<form th:action ="@{/resetPanier}" method="post" style="width: auto;">
-						<td><input type="submit" name= "reset" value="reset" /></td>
-						</form>
-					</td>
-					</tr>
-				</table>
-			</aside>
+<!-- 			<aside class="resetpanier"> -->
+<!-- 				<table> -->
+<!-- 					<tr> -->
+<!-- 					<td> -->
+<!-- 						<form th:action ="@{/resetPanier}" method="post" style="width: auto;"> -->
+<!-- 						<td><input type="submit" name= "reset" value="reset" /></td> -->
+<!-- 						</form> -->
+<!-- 					</td> -->
+<!-- 					</tr> -->
+<!-- 				</table> -->
+<!-- 			</aside> -->
 		</section>
 		
 		<table class="clientPanier">
 			<tr>
 				<td>
-					<SELECT class="taille" id="zzz" name="zzz"  >
+					<SELECT id="zzz" name="zzz" style="width: 150px;" >
 						<option th:each="client : ${clients}"  th:text="${client.name}" ></option>
 					</SELECT>
 				</td>
  				<td>
- 					<a th:href="@{/create/clientPanier}" class="btn btn-inverse">Creer un nouveau client</a>
+<!--  					<a th:href="@{/create/clientPanier}" class="btn btn-inverse">Creer un nouveau client</a> -->
+					<td><input type="submit" value="Creer un nouveau client" onclick="self.location.href='/create/clientPanier'" /></td>
  				</td>
 			</tr>
+			<tr>
+				
+				<td> Total à payer HT</td>
+				<td th:text= "${session.total}"></td> 
+			</tr>
+			
+			<tr>
+				<td> Montant de la TVA</td>
+				<td th:text="${session.total} == null ? 0 : ${session.total} * 0.20 "></td> 
+			</tr>
+			<tr>
+				<td> Montant Total à payer</td>
+				<td th:text="${session.total} == null ? 0 :${session.total} + ${session.total} * 0.20 "></td> 
+			</tr>
+			
+			<tr>
+				<td> Code bon d'achat</td>
+				<td th:each="code : ${codePromos}">
+					<td><input type="text" placeholder="Code Promo" name="codepromos"/></td> 
+ 					<td><a th:href="@{/validCode(id=${code.id})}" name="soumettre">soumettre</a></td>
+	 			</td>
+<!-- 				<td><input type="text" placeholder="Code Promo" name="codepromos"/></td>  -->
+<!--  	 			<td><a th:href="@{/validCode}"> Soumettre </a></td>  -->
+			</tr>
+			
+			<tr>
+				<td> Total après soustraction de la promo</td>
+				<td th:text="${session.total}"></td> 
+			</tr>
 		</table>
+		
+		
+		
+<!-- 		<h1>Total HT</h1> -->
+
+<!-- 				<table> -->
+<!-- 					<tr > -->
+<!-- 						<td th:text= "${session.total}"></td>  -->
+<!-- 					</tr> -->
+					
+<!-- 				</table> -->
 
 		<!-- 	<footer> ICI ON VERA APRES CE QU ON VA METTRE </footer> -->
 		<!-- récupérer les noms des différents produits et afficher sur les boutons du tableau -->

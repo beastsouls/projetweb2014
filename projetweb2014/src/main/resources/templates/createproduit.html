@@ -20,7 +20,7 @@
 
 
 		<form action="#" th:object="${produit}" method="post">
-			<input type="text" th:field="*{name}" placeholder="Name" class="name" STYLE='color:white'/>
+			<input type="text" th:field="*{name}" placeholder="Name" class="name" STYLE='color:black'/>
 			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			<div>
 				<p class="name-help">Nom du produit.</p>
@@ -29,7 +29,7 @@
 				class="type" />-->
 			
 			
-				<SELECT placeholder="type" size="1" th:field="*{Typeproduit}" STYLE='color:white'>
+				<SELECT placeholder="type" size="1" th:field="*{Typeproduit}" STYLE='color:black'>
 					<OPTION value="">----selectionner-----</OPTION>
 					<OPTION value="Nourriture">Nourriture</OPTION>
 					<OPTION value="Boisson">Boisson</OPTION>    
@@ -43,20 +43,20 @@
 			</div>
 	
 		
-		<input type="text" th:field="*{Prix}" placeholder="prix" class="prix" STYLE='color:white' />
+		<input type="text" th:field="*{Prix}" placeholder="prix" class="prix" STYLE='color:black' />
 		<span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 			<div>
 				<p class="prix-help">Prix du produit.</p>
 			</div>
 		
 		
-		<input type="text" th:field="*{stock}" placeholder="stock"	class="stock" STYLE='color:white'/>
+		<input type="text" th:field="*{stock}" placeholder="stock"	class="stock" STYLE='color:black'/>
 		<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
 			<div>
 				<p class="stock-help">Nombre de produit en stock.</p>
 			</div>
 			
-		<input type="text" th:field="*{description}" placeholder="description" class="description" STYLE='color:white'/>
+		<input type="text" th:field="*{description}" placeholder="description" class="description" STYLE='color:black'/>
 		<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 			<div>
 				<p class="description-help">Description du produit.</p>

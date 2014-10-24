@@ -22,12 +22,12 @@
 	{
 	var valeur = document.forms['form1'].elements['zzz'].value; // Contient la valeur de l'<input />
 
-	document.location.href = '../client/recherche?id='+valeur;
+	document.location.href = '../codePromo/id='+valeur;
 	};
 	
-	function creationClient()
+	function creationCPromo()
 	{
-		document.location.href = "../create/client";
+		document.location.href = "../create/codePromo";
 	};
 	
 	function importer(){
@@ -161,7 +161,6 @@
 		</ul>
 		
 		<div class="nav-divider">&nbsp;</div>
-		
 		                    
 		<ul class="current"><li><a href="/codePromo/"><b>Code Promo</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -171,7 +170,6 @@
 		</ul>
 		
 		<div class="nav-divider">&nbsp;</div>
-		
 		
 		<ul class="select"><li><a href="/client/"><b>Client</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -223,8 +221,8 @@
  </ul>-->
 
 <fieldset class="well the-fieldset">		
-			<a href="javascript:creationClient();">
-			<input type="button" name = "creationClient" value="Creer un nouveau client" class="btn btn-inverse"/>
+			<a href="javascript:creationCPromo();">
+			<input type="button" name = "creationCPromo" value="Creer un nouveau Code promo" class="btn btn-inverse"/>
 			</a>
 			<!-- <a>
 			<input type="submit" name = "importer" value="import" class="btn btn-inverse" onclick="write_to_excel();"/>
@@ -265,22 +263,22 @@
             <table class="table">
             <thead>
                 <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="Nom" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Compagnie" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Email" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Adresse" disabled="disabled"/></th>
-                        <th><input type="text" class="form-control" placeholder="Statut" disabled="disabled"/></th>
-                </tr>
+                        <th><input type="text" class="form-control" placeholder="Code" disabled="disabled"/></th>
+                        <th><input type="text" class="form-control" placeholder="montant" disabled="disabled"/></th>
+<!--                         <th><input type="text" class="form-control" placeholder="Email" disabled="disabled"/></th> -->
+<!--                         <th><input type="text" class="form-control" placeholder="Adresse" disabled="disabled"/></th> -->
+<!--                         <th><input type="text" class="form-control" placeholder="Statut" disabled="disabled"/></th> -->
+                </tr> 
 		</thead>
 		<tbody>
-			<tr th:each="client : ${clients}">
-				<td><span th:text="${client.name}"></span></td>
-				<td><span th:text="${client.compagnie}"></span></td>
-				<td><span th:text="${client.Email}"></span></td>
-				<td><span th:text="${client.Adresse}"></span></td>
-				<td><span th:text="${client.role}"></span></td>
-				<td><span><a th:href="@{/edit/client(id=${client.id})}">Editer</a></span></td>
-				<td><span><a th:href="@{/delete/client(id=${client.id})}">Supprimer</a></span></td>
+			<tr th:each="codePromo : ${codePromos}">
+				<td><span th:text="${codePromo.code}"></span></td>
+				<td><span th:text="${codePromo.montant}"></span></td>
+<!-- 				<td><span th:text="${client.Email}"></span></td> -->
+<!-- 				<td><span th:text="${client.Adresse}"></span></td> -->
+<!-- 				<td><span th:text="${client.role}"></span></td> -->
+				<td><span><a th:href="@{/edit/codePromo(id=${codePromo.id})}">Editer</a></span></td>
+				<td><span><a th:href="@{/delete/codePromo(id=${codePromo.id})}">Supprimer</a></span></td>
 			</tr>
 		</tbody>
             </table>

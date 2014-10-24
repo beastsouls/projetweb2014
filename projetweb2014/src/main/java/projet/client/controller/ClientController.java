@@ -53,12 +53,30 @@ public class ClientController extends WebMvcConfigurerAdapter {
 		return "list";
 	}
 	
-	@RequestMapping(value="/create/clientPanier")
-	public String retourPanier()
-	{
-		
+	
+	
+	@RequestMapping(value = "/create/clientPanier", method = RequestMethod.GET)
+	public String createCPForm(Model model) {
+		model.addAttribute("client", new Client());
 		return "createCPanier";
 	}
+	
+	@RequestMapping(value = "/create/clientPanier", method = RequestMethod.POST)
+	public String submitCPForm( @Valid @ModelAttribute Client client, BindingResult bindingresult) {
+		if (bindingresult.hasErrors()) {
+            return "createCPanier";
+        }
+		clientRepository.save(client);
+		return "redirect:/caisse/";
+	}
+	
+	
+//	@RequestMapping(value="/create/clientPanier" , method = RequestMethod.POST)
+//	public String retourPanier()
+//	{
+//		
+//		return "createCPanier";
+//	}
 	
 	@RequestMapping(value = "/client/", method = RequestMethod.GET)
 	public String listclients(Model model) {
