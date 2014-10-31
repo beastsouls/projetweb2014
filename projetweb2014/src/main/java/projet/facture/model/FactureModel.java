@@ -1,15 +1,16 @@
 package projet.facture.model;
 
-import java.util.Collection;
+
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
-import ch.qos.logback.core.net.server.Client;
-import projet.employe.model.Employe;
-import projet.produit.model.Produit;
+
+
+
 
 
 @Entity
@@ -19,30 +20,50 @@ public class FactureModel {
 	@GeneratedValue
 	private long id = -1;
 	
-	
-	// ientitifiant de l'employé qui a encaissé 
-//	@OneToOne
-//	private Employe employee;
-//	
-	// identifiant du client de la facture
-//	@OneToOne
-//	private Client client;
-	
-	// list des produits encaisse
-//	@ManyToMany
-//	private Collection<Produit> produits ;
-	
-    
-	// nombre de produits commande
-	private long nombre ;
+	private String panier;
 	
 	// montant de la cature
-	private long montant;
+	private double montant;
 	
 	//moyen de paiement
 	private String moyen;
 
 	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double d) {
+		this.montant = d;
+	}
+
+	public String getMoyen() {
+		return moyen;
+	}
+
+	public void setMoyen(String moyen) {
+		this.moyen = moyen;
+	}
+
+	public String getPanier() {
+		return panier;
+	}
+
+	public void setPanier(String panier) {
+		this.panier = panier;
+	}
+
 
 
 

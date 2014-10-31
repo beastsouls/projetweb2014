@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import projet.CodePromo.model.CodePromo;
 import projet.CodePromo.repository.CodePromoRepository;
 import projet.client.repository.ClientRepository;
+import projet.facture.model.FactureModel;
+import projet.facture.repository.FactureRepository;
 import projet.produit.model.Produit;
 import projet.produit.model.ProduitQuantity;
 import projet.produit.repository.produitRepository;
@@ -26,11 +28,16 @@ import projet.produit.repository.produitRepository;
 public class Controlleur {
 	@Autowired
 	private produitRepository produitRepository;
+	
+	
 	private Map<Long,ProduitQuantity> panierListe;
 	private double total=0;
 	
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	@Autowired
+	private FactureRepository factureRepository;
 	
 	@Autowired
 	private CodePromoRepository CPrepository;
@@ -70,7 +77,7 @@ public class Controlleur {
 			{panierListe = new LinkedHashMap<Long,ProduitQuantity>(); }
 		
 		if(!panierListe.containsKey(produit.getId())){
-		ProduitQuantity Pquantity = new ProduitQuantity();
+			ProduitQuantity  Pquantity = new ProduitQuantity();
 		Pquantity.setElementPanier(produit);
 		Pquantity.setQuantity(1);
 		panierListe.put(Pquantity.getElementPanier().getId(),Pquantity);
@@ -115,6 +122,31 @@ public class Controlleur {
 		total=0;
 		session.setAttribute("panierListe", panierListe);
 		session.setAttribute("total", total);
+		return "redirect:/caisse";
+	}
+	
+	@RequestMapping(value = "/payespece", method = RequestMethod.POST)
+	public String payerenespece(Model model, HttpSession session) {
+		//System.out.println(id);
+		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
+		String liste="";
+		FactureModel lafacture = new FactureModel();
+		 for(long key: panierListe.keySet()){
+			             System.out.println(key + " - " + panierListe.get(key).getElementPanier().getName()+ " - " +panierListe.get(key).getQuantity());
+			             liste=liste+"  "+panierListe.get(key).getElementPanier().getName().toString()+ " ";
+			             lafacture.setPanier(liste);
+			             lafacture.setMontant(panierListe.get(key).getSomme());
+			             lafacture.setMoyen("ESPECE");
+			             
+			           
+		 }
+		 System.out.println("la facture");
+		 System.out.println(lafacture.getPanier());
+		 System.out.println(lafacture.getMontant());
+		 System.out.println(lafacture.getMoyen());
+		factureRepository.save(lafacture);
+//		session.setAttribute("panierListe", panierListe);
+//		session.setAttribute("total", total);
 		return "redirect:/caisse";
 	}
 	

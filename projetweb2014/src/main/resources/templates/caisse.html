@@ -122,13 +122,30 @@
 							</form>
 						</td>
 					</tr>
-						<tr> 
+					<tr> 
  							<td>
 								<form th:action ="@{/resetPanier}" method="post" style="width: auto;"> 
 									<center><td><input type="submit" name= "reset" value="Vider le panier" /></td></center>
 								</form>
 							</td>
+					</tr>
+				</table>
+				<table>
+						<tr>
+							<td> Payer en espèce  </td>
+							<form th:action ="@{/payespece}" method="post" style="width: auto;"> 
+							    <td> <input type="submit" name= "reset" value="ESPECE" />  </td>
+							 </form>
 						</tr>
+						<tr>
+							<td> Payer par cheque  </td>
+							<td> <input type="submit" name= "reset" value="CHEQUE" />  </td>
+						</tr>
+						<tr>
+							<td> Payer par CB  </td>
+							<td> <input type="submit" name= "reset" value="CB" />  </td>
+						</tr>
+						
 				</table>
 
 			</aside>
