@@ -139,11 +139,15 @@
 						</tr>
 						<tr>
 							<td> Payer par cheque  </td>
+							<form th:action ="@{/payecheque}" method="post" style="width: auto;"> 
 							<td> <input type="submit" name= "reset" value="CHEQUE" />  </td>
+							</form>
 						</tr>
 						<tr>
 							<td> Payer par CB  </td>
+							<form th:action ="@{/payecb}" method="post" style="width: auto;"> 
 							<td> <input type="submit" name= "reset" value="CB" />  </td>
+							</form>
 						</tr>
 						
 				</table>

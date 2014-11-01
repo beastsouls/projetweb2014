@@ -150,6 +150,55 @@ public class Controlleur {
 		return "redirect:/caisse";
 	}
 	
+	@RequestMapping(value = "/payecb", method = RequestMethod.POST)
+	public String payerencb(Model model, HttpSession session) {
+		//System.out.println(id);
+		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
+		String liste="";
+		FactureModel lafacture = new FactureModel();
+		 for(long key: panierListe.keySet()){
+			             System.out.println(key + " - " + panierListe.get(key).getElementPanier().getName()+ " - " +panierListe.get(key).getQuantity());
+			             liste=liste+"  "+panierListe.get(key).getElementPanier().getName().toString()+ " ";
+			             lafacture.setPanier(liste);
+			             lafacture.setMontant(panierListe.get(key).getSommeTotalFacture());
+			             lafacture.setMoyen("CB");
+			             
+			           
+		 }
+		 System.out.println("la facture");
+		 System.out.println(lafacture.getPanier());
+		 System.out.println(lafacture.getMontant());
+		 System.out.println(lafacture.getMoyen());
+		factureRepository.save(lafacture);
+//		session.setAttribute("panierListe", panierListe);
+//		session.setAttribute("total", total);
+		return "redirect:/caisse";
+	}
+	
+	@RequestMapping(value = "/payecheque", method = RequestMethod.POST)
+	public String payerencheque(Model model, HttpSession session) {
+		//System.out.println(id);
+		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
+		String liste="";
+		FactureModel lafacture = new FactureModel();
+		 for(long key: panierListe.keySet()){
+			             System.out.println(key + " - " + panierListe.get(key).getElementPanier().getName()+ " - " +panierListe.get(key).getQuantity());
+			             liste=liste+"  "+panierListe.get(key).getElementPanier().getName().toString()+ " ";
+			             lafacture.setPanier(liste);
+			             lafacture.setMontant(panierListe.get(key).getSommeTotalFacture());
+			             lafacture.setMoyen("CHEQUE");
+			             
+			           
+		 }
+		 System.out.println("la facture");
+		 System.out.println(lafacture.getPanier());
+		 System.out.println(lafacture.getMontant());
+		 System.out.println(lafacture.getMoyen());
+		factureRepository.save(lafacture);
+//		session.setAttribute("panierListe", panierListe);
+//		session.setAttribute("total", total);
+		return "redirect:/caisse";
+	}
 	@RequestMapping(value = "/validCode", method = RequestMethod.GET)
 	public String testCodeSubmit(@RequestParam("id") Long id, @RequestParam("codepromos") String code, Model model, HttpSession session) {
 		
