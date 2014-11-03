@@ -1,5 +1,7 @@
 package projet.CodePromo.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +22,28 @@ public class CodePromo {
 	@NotNull
 	private int montant;
 	
+	@NotNull
+	private Date debut;
+	
+	@NotNull
+	private Date fin;
+	
+	public Date getDebut() {
+		return debut;
+	}
+
+	public void setDebut(Date debut) {
+		this.debut = debut;
+	}
+
+	public Date getFin() {
+		return fin;
+	}
+
+	public void setFin(Date fin) {
+		this.fin = fin;
+	}
+
 	public long getId() {
 		return id;
 	}

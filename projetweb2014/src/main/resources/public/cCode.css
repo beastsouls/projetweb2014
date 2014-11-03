@@ -41,7 +41,7 @@ h1 {
   width:$full;
 }
 
-.monatnt-help, .code-help{
+.montant-help, .code-help, .debut-help, .fin-help{
 display: none;
 	padding: 0px;
 	margin: 0px 0px 15px 0px;

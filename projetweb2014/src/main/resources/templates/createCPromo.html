@@ -5,6 +5,41 @@
 <link rel="stylesheet" type="text/css" href="/cCode.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jquery.ui.datepicker-ar.js"></script>
+<script src="jquery.ui.datepicker-fr.js"></script>
+<script src="jquery.ui.datepicker-he.js"></script>
+<script src="jquery.ui.datepicker-zh-TW.js"></script>
+
+<script>
+// jQuery(function($){
+// 	   $.datepicker.regional['fr'] = {
+// 	      closeText: 'Fermer',
+// 	      prevText: '<Préc',
+// 	      nextText: 'Suiv>',
+// 	      currentText: 'Courant',
+// 	      monthNames: ['Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin',
+// 	      'Juillet','Ao&ucirc;t','Septembre','Octobre','Novembre','D&eacute;cembre'],
+// 	      monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun',
+// 	      'Jul','Aoû','Sep','Oct','Nov','Déc'],
+// 	      dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+// 	      dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+// 	      dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+// 	      weekHeader: 'Sm',
+// 	      //dateFormat: 'dd/mm/yy',
+// 	                dateFormat: 'dd/mm/yy',
+// 	      firstDay: 1,
+// 	      isRTL: false,
+// 	      showMonthAfterYear: false,
+// 	      yearSuffix: ''};
+// 	   $.datepicker.setDefaults($.datepicker.regional['fr']);
+// 	});
+// $(".datepicker").datepicker();
+// $(function() {
+// $( "#datedebut" ).datepicker();
+// $( "#datefin" ).datepicker();
+// });
+</script>
+
 
 </head>
 <body>
@@ -28,7 +63,19 @@
 			<div>
 				<p class="montant-help">Rentrer le montant de la promotion.</p>
 			</div>
-		
+			
+		<input type="text" th:field="*{debut}" placeholder="Date Debut" class="code" STYLE='color:black' name="datedebut"/>
+		<span th:if="${#fields.hasErrors('debut')}" th:errors="debut"></span>
+			<div>
+				<p class="debut-help">Début de la validité de la promotion.</p>
+			</div>
+			
+		<input type="text" th:field="*{fin}" placeholder="Date fin" class="code" STYLE='color:black' name="datefin"/>
+		<span th:if="${#fields.hasErrors('fin')}" th:errors="fin"></span>
+			<div>
+				<p class="fin-help">Fin de la validité de la promotion.</p>
+			</div>
+			
 		<table>
 			<td><form ACTION="/codePromo/"><INPUT TYPE="SUBMIT" VALUE="envoyer" class="submit"/></form></td>
 			<td><form ACTION="/codePromo/"><INPUT TYPE="SUBMIT" VALUE="retour" class="submit"/></form></td>
@@ -50,6 +97,18 @@
 		$(".montant-help").slideDown(500);
 	}).blur(function() {
 		$(".montant-help").slideUp(500);
+	});
+	
+	$(".debut").focus(function() {
+		$(".debut-help").slideDown(500);
+	}).blur(function() {
+		$(".debut-help").slideUp(500);
+	});
+	
+	$(".fin").focus(function() {
+		$(".fin-help").slideDown(500);
+	}).blur(function() {
+		$(".fin-help").slideUp(500);
 	});
 
 </script>

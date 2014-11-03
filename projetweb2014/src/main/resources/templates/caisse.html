@@ -207,9 +207,13 @@
 			
 			<tr>
 				<td> Code bon d'achat</td>
-				<td th:each="code : ${codePromos}">
+<!-- 				<td th:each="code : ${codePromos}"> -->
+					<td>
+					<form th:action="@{/validCode}" method="get" style="width: auto;">
 					<td><input type="text" placeholder="Code Promo" name="codepromos"/></td> 
- 					<td><a th:href="@{/validCode(id=${code.id})}" name="soumettre">soumettre</a></td>
+<!--  					<td><a th:href="@{/validCode(id=${code.id})}" name="soumettre">soumettre</a></td> -->
+					<td><input type="submit" name="soumettre"/></td>
+					</form>
 	 			</td>
 <!-- 				<td><input type="text" placeholder="Code Promo" name="codepromos"/></td>  -->
 <!--  	 			<td><a th:href="@{/validCode}"> Soumettre </a></td>  -->
@@ -217,7 +221,8 @@
 			
 			<tr>
 				<td> Total après soustraction de la promo</td>
-				<td th:text="${session.total}"></td> 
+ 				<td th:text="${session.totale}"></td>  
+<!-- 				<td th:text="${session.total} == null ? 0 :${session.total} + ${session.total} * 0.20 "></td>  -->
 			</tr>
 		</table>
 		

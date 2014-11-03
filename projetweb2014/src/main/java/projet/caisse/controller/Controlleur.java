@@ -1,6 +1,7 @@
 package projet.caisse.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -199,18 +200,34 @@ public class Controlleur {
 //		session.setAttribute("total", total);
 		return "redirect:/caisse";
 	}
+	
+	
 	@RequestMapping(value = "/validCode", method = RequestMethod.GET)
-	public String testCodeSubmit(@RequestParam("id") Long id, @RequestParam("codepromos") String code, Model model, HttpSession session) {
-		
-		for(int i=0; i< CPrepository.count(); i++)
+	public String testCodeSubmit(@RequestParam("codepromos") String code, Model model, HttpSession session) {
+//		List<CodePromo> c = (List<CodePromo>) CPrepository.findAll();
+//		double totale=0;
+//		for(int i=0; i< c.size(); i++)
+//		{
+//			if(c.get(i).getCode().equals(code))
+//			{
+//				totale = (total*1.20) - c.get(i).getMontant();
+//			}
+//		}
+//		
+	
+		double totale=0;
+		Date date = new Date();
+		CodePromo c = CPrepository.findByCode(code);
+				
+		if(c != null && c.getId()>0)
 		{
-			if(CPrepository.findOne(id).getCode() == code)
-			{
-				total = total - CPrepository.findOne(id).getMontant();
-			}
+			if(date.compareTo(c.getDebut())>=0 && date.compareTo(c.getFin())<=0)
+			totale = (total*1.20) - c.getMontant();
 		}
+		else
+			 System.out.println("dommage");
 		
-		session.setAttribute("total", total);
+		session.setAttribute("totale", totale);
 		return "redirect:/caisse";
 	}
 }
