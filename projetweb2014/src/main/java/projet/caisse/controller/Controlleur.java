@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import projet.CodePromo.model.CodePromo;
 import projet.CodePromo.repository.CodePromoRepository;
 import projet.client.repository.ClientRepository;
-import projet.facture.model.FactureModel;
+import projet.facture.model.Liste;
 import projet.facture.repository.FactureRepository;
 import projet.produit.model.Produit;
 import projet.produit.model.ProduitQuantity;
@@ -34,6 +34,7 @@ public class Controlleur {
 	private Map<Long,ProduitQuantity> panierListe;
 	private double total=0;
 	private int message = -1;
+	private Map<Long , ProduitQuantity> facture;
 	
 	@Autowired
 	private ClientRepository clientRepository;
@@ -54,8 +55,8 @@ public class Controlleur {
 	}
 
 	@RequestMapping(value = "/caisse", method = RequestMethod.POST)
-	public String productSubmit(@ModelAttribute Produit product,
-			HttpSession session, Model model) {
+	public String productSubmit(@ModelAttribute Produit product,	HttpSession session, Model model) 
+	{
 		List<Produit> panier = (List<Produit>) session.getAttribute("panier");
 		if (panier == null)
 			panier = new ArrayList<Produit>();
@@ -96,8 +97,28 @@ public class Controlleur {
 		//System.out.println(id);
 		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
 		ProduitQuantity prodQuantity = panierListe.get(id);
-		prodQuantity.setQuantity(qt);
-		prodQuantity.setSomme(qt * prodQuantity.getElementPanier().getPrix());
+		
+		System.out.println(" stock de " + prodQuantity.getElementPanier().getName() + "  =" + prodQuantity.getElementPanier().getStock());
+		prodQuantity.getElementPanier().setStock(prodQuantity.getElementPanier().getStock() - qt);
+		System.out.println("nouveau stock de " + prodQuantity.getElementPanier().getName() + "  =" + prodQuantity.getElementPanier().getStock());
+		if(prodQuantity.getElementPanier().getStock()<0)
+		{
+			System.out.println("le stock est negatif ");
+			prodQuantity.setQuantity(qt + prodQuantity.getElementPanier().getStock());
+			System.out.println("quantite donnee dans le panier " + prodQuantity.getQuantity());
+			
+		}
+		else
+		{
+			if(prodQuantity.getElementPanier().getStock() == 0)
+			prodQuantity.setQuantity(0);
+			else
+				prodQuantity.setQuantity(qt);
+		}
+		//prodQuantity.setQuantity(qt);
+		prodQuantity.setSomme(prodQuantity.getQuantity() * prodQuantity.getElementPanier().getPrix());
+		produitRepository.save(prodQuantity.getElementPanier());
+		
 		//prodQuantity.setSommeTotalFacture(prodQuantity.getSommeTotalFacture() + prodQuantity.getSomme());
 		
 //		if(!panierListe.containsKey(prodQuantity.getElementPanier().getId())){
@@ -247,23 +268,14 @@ public class Controlleur {
 		//System.out.println(id);
 		panierListe = (Map<Long,ProduitQuantity>) session.getAttribute("panierListe");
 		String liste="";
-		FactureModel lafacture = new FactureModel();
-		 for(long key: panierListe.keySet()){
-			             System.out.println(key + " - " + panierListe.get(key).getElementPanier().getName()+ " - " +panierListe.get(key).getQuantity());
-			             liste=liste+"  "+panierListe.get(key).getElementPanier().getName().toString()+ " ";
-			             lafacture.setPanier(liste);
-			             lafacture.setMontant(panierListe.get(key).getSomme());
-			             lafacture.setMoyen("ESPECE");
-			             
-			           
-		 }
-		 System.out.println("la facture");
-		 System.out.println(lafacture.getPanier());
-		 System.out.println(lafacture.getMontant());
-		 System.out.println(lafacture.getMoyen());
-		factureRepository.save(lafacture);
-//		session.setAttribute("panierListe", panierListe);
-//		session.setAttribute("total", total);
+		facture  = new LinkedHashMap<Long,ProduitQuantity>();
+		
+		for(long i =0 ; i< panierListe.size() ; i++)
+		{
+			facture.put(i, panierListe.get(i));
+			
+		}
+		
 		return "redirect:/caisse";
 	}
 }

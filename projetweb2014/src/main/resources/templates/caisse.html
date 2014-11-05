@@ -130,28 +130,54 @@
 							</td>
 					</tr>
 				</table>
+<!-- 				<table> -->
+<!-- 						<tr> -->
+<!-- 							<td> Payer en espèce  </td> -->
+<!-- 							<form th:action ="@{/payespece}" method="post" style="width: auto;">  -->
+<!-- 							    <td> <input type="submit" name= "reset" value="ESPECE" />  </td> -->
+<!-- 							 </form> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td> Payer par cheque  </td> -->
+<!-- 							<form th:action ="@{/payecheque}" method="post" style="width: auto;">  -->
+<!-- 							<td> <input type="submit" name= "reset" value="CHEQUE" />  </td> -->
+<!-- 							</form> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td> Payer par CB  </td> -->
+<!-- 							<form th:action ="@{/payecb}" method="post" style="width: auto;">  -->
+<!-- 							<td> <input type="submit" name= "reset" value="CB" />  </td> -->
+<!-- 							</form> -->
+<!-- 						</tr> -->
+						
+<!-- 				</table> -->
+
+			</aside>
+			
+			
+			<aside class="paie">
+			<h1>Moyen de paiement</h1>
 				<table>
 						<tr>
-							<td> Payer en espèce  </td>
+							<td> Payer en espèces  </td>
 							<form th:action ="@{/payespece}" method="post" style="width: auto;"> 
-							    <td> <input type="submit" name= "reset" value="ESPECE" />  </td>
+							    <td> <input type="image" src="/images/Especes.jpg" name="espece" value="ESPECE"  height="35" width="70" />  </td>
 							 </form>
 						</tr>
 						<tr>
 							<td> Payer par cheque  </td>
 							<form th:action ="@{/payecheque}" method="post" style="width: auto;"> 
-							<td> <input type="submit" name= "reset" value="CHEQUE" />  </td>
+							<td> <input type="image" src="/images/cheque.jpg" name="cheque" value="cheque"  height="35" width="70" />   </td>
 							</form>
 						</tr>
 						<tr>
 							<td> Payer par CB  </td>
 							<form th:action ="@{/payecb}" method="post" style="width: auto;"> 
-							<td> <input type="submit" name= "reset" value="CB" />  </td>
+							<td><input type="image" src="/images/cb.png" name="cb" value="cb"  height="35" width="70" />   </td>
 							</form>
 						</tr>
 						
 				</table>
-
 			</aside>
 			
 <!-- 			<aside class="total"> -->

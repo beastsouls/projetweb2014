@@ -78,6 +78,13 @@ section {
     
 }
 
+.paie
+{
+	position :fixed;
+	float :right;
+	margin-top: 400px;
+}
+
 /* Corps */
 
 article, aside

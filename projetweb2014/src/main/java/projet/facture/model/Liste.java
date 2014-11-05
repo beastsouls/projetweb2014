@@ -5,7 +5,9 @@ public class Liste {
 	private String nom;
 	
 	private long qtt;
+	
 	private long som;
+	
 	public String getNom() {
 		return nom;
 	}

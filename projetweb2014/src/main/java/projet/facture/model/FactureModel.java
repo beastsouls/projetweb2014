@@ -9,10 +9,6 @@ import javax.persistence.Id;
 
 
 
-
-
-
-
 @Entity
 public class FactureModel {
 	
@@ -22,7 +18,7 @@ public class FactureModel {
 	
 	private String panier;
 	
-	// montant de la cature
+	// montant de la caisse
 	private double montant;
 	
 	//moyen de paiement
