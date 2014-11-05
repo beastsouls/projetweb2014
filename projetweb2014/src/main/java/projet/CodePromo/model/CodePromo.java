@@ -5,11 +5,13 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class CodePromo {
@@ -23,9 +25,11 @@ public class CodePromo {
 	private int montant;
 	
 	@NotNull
+	@DateTimeFormat(style = "S-" , iso = DateTimeFormat.ISO.NONE)
 	private Date debut;
 	
 	@NotNull
+	@DateTimeFormat(style = "S-" , iso = DateTimeFormat.ISO.NONE)
 	private Date fin;
 	
 	public Date getDebut() {

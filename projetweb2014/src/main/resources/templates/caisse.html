@@ -182,7 +182,7 @@
 			<tr>
 				<td>
 					<SELECT id="zzz" name="zzz" style="width: 150px;" >
-						<option th:each="client : ${clients}"  th:text="${client.name}" ></option>
+						<option th:each="client : ${clients}"  th:text="${client.name}" selected="selected"></option>
 					</SELECT>
 				</td>
  				<td>
@@ -218,6 +218,11 @@
 <!-- 				<td><input type="text" placeholder="Code Promo" name="codepromos"/></td>  -->
 <!--  	 			<td><a th:href="@{/validCode}"> Soumettre </a></td>  -->
 			</tr>
+			
+			<tr>
+				<td th:text="${session.message} == 0 ?  'Le bon de reduction est invalide' : '' " style="color: red;"></td>
+			</tr>
+			
 			
 			<tr>
 				<td> Total après soustraction de la promo</td>
