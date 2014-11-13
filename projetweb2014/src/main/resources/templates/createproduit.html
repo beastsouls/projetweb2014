@@ -19,7 +19,7 @@
 		</div>
 
 
-		<form action="#" th:object="${produit}" method="post">
+		<form action="#" th:object="${produit}" method="post" enctype="multipart/form-data">
 			<input type="text" th:field="*{name}" placeholder="Name" class="name" STYLE='color:black'/>
 			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			<div>
@@ -61,6 +61,9 @@
 			<div>
 				<p class="description-help">Description du produit.</p>
 			</div>
+			
+			Image(seulement jpeg) : <input type="file" name="file"/>
+			
 		<table>
 			<td><FORM ACTION="/produit/"><INPUT TYPE="SUBMIT" VALUE="envoyer" class="submit" />	</FORM></td>
 			<td><FORM ACTION="/produit/"><INPUT TYPE="SUBMIT" VALUE="retour" class="submit" />	</FORM></td>
