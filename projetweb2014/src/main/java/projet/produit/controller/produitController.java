@@ -22,6 +22,8 @@ import projet.client.model.Client;
 import projet.produit.model.Produit;
 import projet.produit.repository.produitRepository;
 
+import org.eclipse.core.resources.*;
+import org.eclipse.core.runtime.IPath;
 
 @Controller
 public class produitController implements ResourceLoaderAware{
@@ -48,7 +50,7 @@ public class produitController implements ResourceLoaderAware{
 //	}
 	
 	@RequestMapping(value = "/create/produit", method = RequestMethod.POST)
-	public String submitForm( @Valid @ModelAttribute Produit produit, BindingResult bindingresult, @RequestParam("file") MultipartFile file) {
+	public String submitForm( @Valid @ModelAttribute Produit produit, BindingResult bindingresult, @RequestParam("file") MultipartFile file, Model model) {
 		if (bindingresult.hasErrors()) {
             return "createproduit";
         }
@@ -57,24 +59,17 @@ public class produitController implements ResourceLoaderAware{
 		
 		if (!file.isEmpty()) {
             try {System.out.println(file.toString());
+            	File dest =  new File (resourceLoader.getResource("file:src/main/resources/public/images/produits/"+produit.getName() + getFileExtension(file)).getURL().getFile());
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(produit.getName() + ".jpg")));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(dest));
                 stream.write(bytes);
-                
-               
-                File dest =  new File (resourceLoader.getResource("file:src/main/resources/public/images/produits/"+produit.getName() + ".jpg").getURL().getFile());
-             //   File dest =  new File ("src/main/resources/public/images/produits/"+produit.getName() + ".jpg");
-                System.out.println("chemin relatif de dest : "+dest.getPath());
-                System.out.println("chemin absolu de dest : "+dest.getAbsolutePath());
-                System.out.println("avant transfert dest");
-                file.transferTo(dest.getAbsoluteFile());
-                System.out.println("apres transfert dest");
                 
                 stream.close();
             } 
             catch (Exception e) {
             	System.out.println("empty file");
             }
+            
         }
 		return "redirect:/produit/";
 	}
@@ -122,6 +117,16 @@ public class produitController implements ResourceLoaderAware{
 	public void setResourceLoader(ResourceLoader rl) {
 		// TODO Auto-generated method stub
 		this.resourceLoader = rl;
+	}
+	
+	private String getFileExtension(MultipartFile file){
+		String name = file.getOriginalFilename();
+		//System.out.println("name : "+name);
+		int lastIndexOf = name.lastIndexOf(".");
+		if(lastIndexOf == -1)
+			return "";
+		//System.out.println("index : "+lastIndexOf+" extension: "+name.substring(lastIndexOf));
+		return name.substring(lastIndexOf);
 	}
 
 }
