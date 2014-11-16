@@ -129,55 +129,44 @@
 								</form>
 							</td>
 					</tr>
-				</table>
-<!-- 				<table> -->
-<!-- 						<tr> -->
-<!-- 							<td> Payer en espèce  </td> -->
-<!-- 							<form th:action ="@{/payespece}" method="post" style="width: auto;">  -->
-<!-- 							    <td> <input type="submit" name= "reset" value="ESPECE" />  </td> -->
-<!-- 							 </form> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td> Payer par cheque  </td> -->
-<!-- 							<form th:action ="@{/payecheque}" method="post" style="width: auto;">  -->
-<!-- 							<td> <input type="submit" name= "reset" value="CHEQUE" />  </td> -->
-<!-- 							</form> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td> Payer par CB  </td> -->
-<!-- 							<form th:action ="@{/payecb}" method="post" style="width: auto;">  -->
-<!-- 							<td> <input type="submit" name= "reset" value="CB" />  </td> -->
-<!-- 							</form> -->
-<!-- 						</tr> -->
-						
-<!-- 				</table> -->
-
+				</table>			
 			</aside>
 			
 			
 			<aside class="paie">
-			<h1>Moyen de paiement</h1>
-				<table>
-						<tr>
-							<td> Payer en espèces  </td>
-							<form th:action ="@{/payespece}" method="post" style="width: auto;"> 
-							    <td> <input type="image" src="/images/Especes.jpg" name="espece" value="ESPECE"  height="35" width="70" />  </td>
-							 </form>
+			<h1>Enregistrement Client Et paiement</h1>
+			<table>
+			
+			<td><input type="submit" value="Creer un nouveau client" onclick="self.location.href='/create/clientPanier'" /></td>
+				
+				<form th:action="@{/paiement}" method="post" style="width: auto;">
+				
+				<tr>
+						<td>Choisir Client</td>
+
+							<td>
+							<SELECT id="nom" name="nom" style="width: 150px;">
+									<option th:each="client : ${clients}" th:text="${client.name}"
+										selected="selected" name="clientelle"></option>
+							</SELECT>
+							</td>
+					
 						</tr>
 						<tr>
-							<td> Payer par cheque  </td>
-							<form th:action ="@{/payecheque}" method="post" style="width: auto;"> 
-							<td> <input type="image" src="/images/cheque.jpg" name="cheque" value="cheque"  height="35" width="70" />   </td>
-							</form>
-						</tr>
-						<tr>
-							<td> Payer par CB  </td>
-							<form th:action ="@{/payecb}" method="post" style="width: auto;"> 
-							<td><input type="image" src="/images/cb.png" name="cb" value="cb"  height="35" width="70" />   </td>
-							</form>
+							<td> Moyen de paiment  </td>
+							<td><SELECT id="paye" name="paye" style="width: 150px;">
+									<option>ESPECE</option>
+									<option>CB</option>
+									<option>CHEQUE</option>
+							</SELECT></td>
+							<td><input type="Submit" value="Payer" name="payer" />
+							</td>
 						</tr>
 						
+						
+					</form>	
 				</table>
+				
 			</aside>
 			
 <!-- 			<aside class="total"> -->
@@ -205,17 +194,7 @@
 		</section>
 		
 		<table class="clientPanier">
-			<tr>
-				<td>
-					<SELECT id="zzz" name="zzz" style="width: 150px;" >
-						<option th:each="client : ${clients}"  th:text="${client.name}" selected="selected"></option>
-					</SELECT>
-				</td>
- 				<td>
-<!--  					<a th:href="@{/create/clientPanier}" class="btn btn-inverse">Creer un nouveau client</a> -->
-					<td><input type="submit" value="Creer un nouveau client" onclick="self.location.href='/create/clientPanier'" /></td>
- 				</td>
-			</tr>
+			
 			<tr>
 				
 				<td> Total à payer HT</td>
