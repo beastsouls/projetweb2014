@@ -10,7 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class AppController {
 
+	/*
+@RequestMapping(method=RequestMethod.GET)
+public String getAdminForm(Authentication authentication)
+{
+	if((authentication !=null)&& authentication.isAuthenticated())
+	{
+		return "form";
+	}
+	return "login";
+	
+	
+}
 
+*/
 
 @RequestMapping(value="/index",method=RequestMethod.GET)
 public String postLogin(Authentication authentication)
