@@ -1,12 +1,15 @@
 package projet.facture.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import antlr.collections.List;
 
 @Entity
 public class FactureModel {
@@ -20,6 +23,21 @@ public class FactureModel {
 	// montant de la caisse
 	private double montant;
 	private  String Nomclient;
+	private Date datecommande;
+	
+	// moyen de paiement
+		private String moyen;
+		private ArrayList<String> mesproduits = new ArrayList<String>();
+		
+		private ArrayList<Integer> mesqtt = new ArrayList<Integer>();
+
+	public Date getDatecommande() {
+		return datecommande;
+	}
+
+	public void setDatecommande(Date datecommande) {
+		this.datecommande = datecommande;
+	}
 
 	public String getNomclient() {
 		return Nomclient;
@@ -29,9 +47,15 @@ public class FactureModel {
 		Nomclient = nomclient;
 	}
 
-	// moyen de paiement
-	private String moyen;
-	private ArrayList<String> mesproduits = new ArrayList<String>();
+	
+
+	public ArrayList<Integer> getMesqtt() {
+		return mesqtt;
+	}
+
+	public void setMesqtt(ArrayList<Integer> mesqtt) {
+		this.mesqtt = mesqtt;
+	}
 
 	public ArrayList<String> getMesproduits() {
 		return mesproduits;

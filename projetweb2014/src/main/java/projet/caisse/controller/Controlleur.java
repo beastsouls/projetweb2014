@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import projet.CodePromo.model.CodePromo;
 import projet.CodePromo.repository.CodePromoRepository;
 import projet.client.model.Client;
@@ -194,13 +195,13 @@ public class Controlleur {
 		int i = 1;
 		double montant = 0;
 		String liste = "";
-		
+		String newLine = System.getProperty("line.separator");
 		ArrayList<String> fact = new ArrayList<String>();
 		FactureModel lafacture = new FactureModel();
 		for (long key : panierListe.keySet()) {
 			liste = panierListe.get(key).getElementPanier().getName()
 					.toString()
-					+ " * "
+					+ "----|| Quantite || ----  "
 					+ toString().valueOf(
 							panierListe.get(key).getQuantity() );
 			fact.add(liste);
@@ -211,14 +212,15 @@ public class Controlleur {
 		lafacture.setMoyen(paye);
 		lafacture.setNomclient(nom);
 		lafacture.setMontant(montant * 1.20);
+		lafacture.setDatecommande(new Date());
 		factureRepository.save(lafacture);
 		model.addAttribute("factur", factureRepository.findAll());
 		return "facture";
 	}
 	
 	@RequestMapping(value = "/imprime", method = RequestMethod.GET)
-	public String payere(Model model) {
-		model.addAttribute("factures", factureRepository.findAll());
+	public String payere(@RequestParam("id") Long id, Model model) {
+		model.addAttribute("facture", factureRepository.findOne(id));
 		return "imprimeFacture";
 	}
 
