@@ -99,11 +99,5 @@ public class Produit {
 		this.name = name;
 	}
 	
-//	public int getQt() {
-//		return qt;
-//	}
-//	public void setQt(int qt) {
-//		this.qt = qt;
-//	}
 	
 }
